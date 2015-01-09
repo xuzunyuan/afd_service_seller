@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.afd.seller.dao.SellerLoginMapper" >
+  <resultMap id="BaseResultMap" type="com.afd.model.seller.SellerLogin" >
+    <id column="seller_login_id" property="sellerLoginId" jdbcType="INTEGER" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="login_pwd" property="loginPwd" jdbcType="VARCHAR" />
+    <result column="pwd_key" property="pwdKey" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="CHAR" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="type" property="type" jdbcType="CHAR" />
+    <result column="reg_date" property="regDate" jdbcType="TIMESTAMP" />
+    <result column="reg_ip" property="regIp" jdbcType="VARCHAR" />
+    <result column="seller_id" property="sellerId" jdbcType="INTEGER" />
+    <result column="seller_apply_id" property="sellerApplyId" jdbcType="INTEGER" />
+    <result column="last_login_date" property="lastLoginDate" jdbcType="TIMESTAMP" />
+    <result column="last_login_ip" property="lastLoginIp" jdbcType="VARCHAR" />
+    <result column="freeze_date" property="freezeDate" jdbcType="TIMESTAMP" />
+    <result column="freeze_by_name" property="freezeByName" jdbcType="VARCHAR" />
+    <result column="unfreeze_date" property="unfreezeDate" jdbcType="TIMESTAMP" />
+    <result column="unfreeze_by_name" property="unfreezeByName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    seller_login_id, login_name, login_pwd, pwd_key, mobile, nickname, status, type, 
+    reg_date, reg_ip, seller_id, seller_apply_id, last_login_date, last_login_ip, freeze_date, 
+    freeze_by_name, unfreeze_date, unfreeze_by_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_seller_login
+    where seller_login_id = #{sellerLoginId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_seller_login
+    where seller_login_id = #{sellerLoginId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.afd.model.seller.SellerLogin" >
+    insert into t_seller_login (seller_login_id, login_name, login_pwd, 
+      pwd_key, mobile, nickname, 
+      status, type, reg_date, 
+      reg_ip, seller_id, seller_apply_id, 
+      last_login_date, last_login_ip, freeze_date, 
+      freeze_by_name, unfreeze_date, unfreeze_by_name
+      )
+    values (#{sellerLoginId,jdbcType=INTEGER}, #{loginName,jdbcType=VARCHAR}, #{loginPwd,jdbcType=VARCHAR}, 
+      #{pwdKey,jdbcType=VARCHAR}, #{mobile,jdbcType=CHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{status,jdbcType=CHAR}, #{type,jdbcType=CHAR}, #{regDate,jdbcType=TIMESTAMP}, 
+      #{regIp,jdbcType=VARCHAR}, #{sellerId,jdbcType=INTEGER}, #{sellerApplyId,jdbcType=INTEGER}, 
+      #{lastLoginDate,jdbcType=TIMESTAMP}, #{lastLoginIp,jdbcType=VARCHAR}, #{freezeDate,jdbcType=TIMESTAMP}, 
+      #{freezeByName,jdbcType=VARCHAR}, #{unfreezeDate,jdbcType=TIMESTAMP}, #{unfreezeByName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.afd.model.seller.SellerLogin" >
+    insert into t_seller_login
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sellerLoginId != null" >
+        seller_login_id,
+      </if>
+      <if test="loginName != null" >
+        login_name,
+      </if>
+      <if test="loginPwd != null" >
+        login_pwd,
+      </if>
+      <if test="pwdKey != null" >
+        pwd_key,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="regDate != null" >
+        reg_date,
+      </if>
+      <if test="regIp != null" >
+        reg_ip,
+      </if>
+      <if test="sellerId != null" >
+        seller_id,
+      </if>
+      <if test="sellerApplyId != null" >
+        seller_apply_id,
+      </if>
+      <if test="lastLoginDate != null" >
+        last_login_date,
+      </if>
+      <if test="lastLoginIp != null" >
+        last_login_ip,
+      </if>
+      <if test="freezeDate != null" >
+        freeze_date,
+      </if>
+      <if test="freezeByName != null" >
+        freeze_by_name,
+      </if>
+      <if test="unfreezeDate != null" >
+        unfreeze_date,
+      </if>
+      <if test="unfreezeByName != null" >
+        unfreeze_by_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sellerLoginId != null" >
+        #{sellerLoginId,jdbcType=INTEGER},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPwd != null" >
+        #{loginPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="pwdKey != null" >
+        #{pwdKey,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=CHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="regDate != null" >
+        #{regDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="regIp != null" >
+        #{regIp,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerId != null" >
+        #{sellerId,jdbcType=INTEGER},
+      </if>
+      <if test="sellerApplyId != null" >
+        #{sellerApplyId,jdbcType=INTEGER},
+      </if>
+      <if test="lastLoginDate != null" >
+        #{lastLoginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginIp != null" >
+        #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="freezeDate != null" >
+        #{freezeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="freezeByName != null" >
+        #{freezeByName,jdbcType=VARCHAR},
+      </if>
+      <if test="unfreezeDate != null" >
+        #{unfreezeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="unfreezeByName != null" >
+        #{unfreezeByName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.afd.model.seller.SellerLogin" >
+    update t_seller_login
+    <set >
+      <if test="loginName != null" >
+        login_name = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPwd != null" >
+        login_pwd = #{loginPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="pwdKey != null" >
+        pwd_key = #{pwdKey,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=CHAR},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="regDate != null" >
+        reg_date = #{regDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="regIp != null" >
+        reg_ip = #{regIp,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerId != null" >
+        seller_id = #{sellerId,jdbcType=INTEGER},
+      </if>
+      <if test="sellerApplyId != null" >
+        seller_apply_id = #{sellerApplyId,jdbcType=INTEGER},
+      </if>
+      <if test="lastLoginDate != null" >
+        last_login_date = #{lastLoginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginIp != null" >
+        last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="freezeDate != null" >
+        freeze_date = #{freezeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="freezeByName != null" >
+        freeze_by_name = #{freezeByName,jdbcType=VARCHAR},
+      </if>
+      <if test="unfreezeDate != null" >
+        unfreeze_date = #{unfreezeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="unfreezeByName != null" >
+        unfreeze_by_name = #{unfreezeByName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where seller_login_id = #{sellerLoginId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.afd.model.seller.SellerLogin" >
+    update t_seller_login
+    set login_name = #{loginName,jdbcType=VARCHAR},
+      login_pwd = #{loginPwd,jdbcType=VARCHAR},
+      pwd_key = #{pwdKey,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=CHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      status = #{status,jdbcType=CHAR},
+      type = #{type,jdbcType=CHAR},
+      reg_date = #{regDate,jdbcType=TIMESTAMP},
+      reg_ip = #{regIp,jdbcType=VARCHAR},
+      seller_id = #{sellerId,jdbcType=INTEGER},
+      seller_apply_id = #{sellerApplyId,jdbcType=INTEGER},
+      last_login_date = #{lastLoginDate,jdbcType=TIMESTAMP},
+      last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      freeze_date = #{freezeDate,jdbcType=TIMESTAMP},
+      freeze_by_name = #{freezeByName,jdbcType=VARCHAR},
+      unfreeze_date = #{unfreezeDate,jdbcType=TIMESTAMP},
+      unfreeze_by_name = #{unfreezeByName,jdbcType=VARCHAR}
+    where seller_login_id = #{sellerLoginId,jdbcType=INTEGER}
+  </update>
+</mapper>

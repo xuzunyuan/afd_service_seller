@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.afd.seller.dao.SellerApplyQualiMapper" >
+  <resultMap id="BaseResultMap" type="com.afd.model.seller.SellerApplyQuali" >
+    <id column="apply_quali_id" property="applyQualiId" jdbcType="INTEGER" />
+    <result column="apply_id" property="applyId" jdbcType="INTEGER" />
+    <result column="quali_name" property="qualiName" jdbcType="VARCHAR" />
+    <result column="quail_url" property="quailUrl" jdbcType="VARCHAR" />
+    <result column="expire_date" property="expireDate" jdbcType="VARCHAR" />
+    <result column="cc_id" property="ccId" jdbcType="INTEGER" />
+    <result column="cc_name" property="ccName" jdbcType="VARCHAR" />
+    <result column="audit_type" property="auditType" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    apply_quali_id, apply_id, quali_name, quail_url, expire_date, cc_id, cc_name, audit_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_seller_apply_quali
+    where apply_quali_id = #{applyQualiId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_seller_apply_quali
+    where apply_quali_id = #{applyQualiId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.afd.model.seller.SellerApplyQuali" >
+    insert into t_seller_apply_quali (apply_quali_id, apply_id, quali_name, 
+      quail_url, expire_date, cc_id, 
+      cc_name, audit_type)
+    values (#{applyQualiId,jdbcType=INTEGER}, #{applyId,jdbcType=INTEGER}, #{qualiName,jdbcType=VARCHAR}, 
+      #{quailUrl,jdbcType=VARCHAR}, #{expireDate,jdbcType=VARCHAR}, #{ccId,jdbcType=INTEGER}, 
+      #{ccName,jdbcType=VARCHAR}, #{auditType,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.afd.model.seller.SellerApplyQuali" >
+    insert into t_seller_apply_quali
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="applyQualiId != null" >
+        apply_quali_id,
+      </if>
+      <if test="applyId != null" >
+        apply_id,
+      </if>
+      <if test="qualiName != null" >
+        quali_name,
+      </if>
+      <if test="quailUrl != null" >
+        quail_url,
+      </if>
+      <if test="expireDate != null" >
+        expire_date,
+      </if>
+      <if test="ccId != null" >
+        cc_id,
+      </if>
+      <if test="ccName != null" >
+        cc_name,
+      </if>
+      <if test="auditType != null" >
+        audit_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="applyQualiId != null" >
+        #{applyQualiId,jdbcType=INTEGER},
+      </if>
+      <if test="applyId != null" >
+        #{applyId,jdbcType=INTEGER},
+      </if>
+      <if test="qualiName != null" >
+        #{qualiName,jdbcType=VARCHAR},
+      </if>
+      <if test="quailUrl != null" >
+        #{quailUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="expireDate != null" >
+        #{expireDate,jdbcType=VARCHAR},
+      </if>
+      <if test="ccId != null" >
+        #{ccId,jdbcType=INTEGER},
+      </if>
+      <if test="ccName != null" >
+        #{ccName,jdbcType=VARCHAR},
+      </if>
+      <if test="auditType != null" >
+        #{auditType,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.afd.model.seller.SellerApplyQuali" >
+    update t_seller_apply_quali
+    <set >
+      <if test="applyId != null" >
+        apply_id = #{applyId,jdbcType=INTEGER},
+      </if>
+      <if test="qualiName != null" >
+        quali_name = #{qualiName,jdbcType=VARCHAR},
+      </if>
+      <if test="quailUrl != null" >
+        quail_url = #{quailUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="expireDate != null" >
+        expire_date = #{expireDate,jdbcType=VARCHAR},
+      </if>
+      <if test="ccId != null" >
+        cc_id = #{ccId,jdbcType=INTEGER},
+      </if>
+      <if test="ccName != null" >
+        cc_name = #{ccName,jdbcType=VARCHAR},
+      </if>
+      <if test="auditType != null" >
+        audit_type = #{auditType,jdbcType=CHAR},
+      </if>
+    </set>
+    where apply_quali_id = #{applyQualiId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.afd.model.seller.SellerApplyQuali" >
+    update t_seller_apply_quali
+    set apply_id = #{applyId,jdbcType=INTEGER},
+      quali_name = #{qualiName,jdbcType=VARCHAR},
+      quail_url = #{quailUrl,jdbcType=VARCHAR},
+      expire_date = #{expireDate,jdbcType=VARCHAR},
+      cc_id = #{ccId,jdbcType=INTEGER},
+      cc_name = #{ccName,jdbcType=VARCHAR},
+      audit_type = #{auditType,jdbcType=CHAR}
+    where apply_quali_id = #{applyQualiId,jdbcType=INTEGER}
+  </update>
+</mapper>

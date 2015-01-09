@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.afd.seller.dao.SellerRetAddressMapper" >
+  <resultMap id="BaseResultMap" type="com.afd.model.seller.SellerRetAddress" >
+    <id column="s_r_a_id" property="sRAId" jdbcType="INTEGER" />
+    <result column="seller_id" property="sellerId" jdbcType="INTEGER" />
+    <result column="receiver" property="receiver" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="INTEGER" />
+    <result column="province_name" property="provinceName" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="DECIMAL" />
+    <result column="city_name" property="cityName" jdbcType="VARCHAR" />
+    <result column="district" property="district" jdbcType="DECIMAL" />
+    <result column="district_name" property="districtName" jdbcType="VARCHAR" />
+    <result column="town" property="town" jdbcType="DECIMAL" />
+    <result column="town_name" property="townName" jdbcType="VARCHAR" />
+    <result column="addr" property="addr" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="CHAR" />
+    <result column="zip_code" property="zipCode" jdbcType="CHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    s_r_a_id, seller_id, receiver, province, province_name, city, city_name, district, 
+    district_name, town, town_name, addr, tel, mobile, zip_code, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_seller_ret_address
+    where s_r_a_id = #{sRAId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_seller_ret_address
+    where s_r_a_id = #{sRAId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.afd.model.seller.SellerRetAddress" >
+    insert into t_seller_ret_address (s_r_a_id, seller_id, receiver, 
+      province, province_name, city, 
+      city_name, district, district_name, 
+      town, town_name, addr, 
+      tel, mobile, zip_code, status
+      )
+    values (#{sRAId,jdbcType=INTEGER}, #{sellerId,jdbcType=INTEGER}, #{receiver,jdbcType=VARCHAR}, 
+      #{province,jdbcType=INTEGER}, #{provinceName,jdbcType=VARCHAR}, #{city,jdbcType=DECIMAL}, 
+      #{cityName,jdbcType=VARCHAR}, #{district,jdbcType=DECIMAL}, #{districtName,jdbcType=VARCHAR}, 
+      #{town,jdbcType=DECIMAL}, #{townName,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{mobile,jdbcType=CHAR}, #{zipCode,jdbcType=CHAR}, #{status,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.afd.model.seller.SellerRetAddress" >
+    insert into t_seller_ret_address
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sRAId != null" >
+        s_r_a_id,
+      </if>
+      <if test="sellerId != null" >
+        seller_id,
+      </if>
+      <if test="receiver != null" >
+        receiver,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="provinceName != null" >
+        province_name,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="cityName != null" >
+        city_name,
+      </if>
+      <if test="district != null" >
+        district,
+      </if>
+      <if test="districtName != null" >
+        district_name,
+      </if>
+      <if test="town != null" >
+        town,
+      </if>
+      <if test="townName != null" >
+        town_name,
+      </if>
+      <if test="addr != null" >
+        addr,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="zipCode != null" >
+        zip_code,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sRAId != null" >
+        #{sRAId,jdbcType=INTEGER},
+      </if>
+      <if test="sellerId != null" >
+        #{sellerId,jdbcType=INTEGER},
+      </if>
+      <if test="receiver != null" >
+        #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=INTEGER},
+      </if>
+      <if test="provinceName != null" >
+        #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=DECIMAL},
+      </if>
+      <if test="cityName != null" >
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        #{district,jdbcType=DECIMAL},
+      </if>
+      <if test="districtName != null" >
+        #{districtName,jdbcType=VARCHAR},
+      </if>
+      <if test="town != null" >
+        #{town,jdbcType=DECIMAL},
+      </if>
+      <if test="townName != null" >
+        #{townName,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=CHAR},
+      </if>
+      <if test="zipCode != null" >
+        #{zipCode,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.afd.model.seller.SellerRetAddress" >
+    update t_seller_ret_address
+    <set >
+      <if test="sellerId != null" >
+        seller_id = #{sellerId,jdbcType=INTEGER},
+      </if>
+      <if test="receiver != null" >
+        receiver = #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=INTEGER},
+      </if>
+      <if test="provinceName != null" >
+        province_name = #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=DECIMAL},
+      </if>
+      <if test="cityName != null" >
+        city_name = #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        district = #{district,jdbcType=DECIMAL},
+      </if>
+      <if test="districtName != null" >
+        district_name = #{districtName,jdbcType=VARCHAR},
+      </if>
+      <if test="town != null" >
+        town = #{town,jdbcType=DECIMAL},
+      </if>
+      <if test="townName != null" >
+        town_name = #{townName,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=CHAR},
+      </if>
+      <if test="zipCode != null" >
+        zip_code = #{zipCode,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where s_r_a_id = #{sRAId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.afd.model.seller.SellerRetAddress" >
+    update t_seller_ret_address
+    set seller_id = #{sellerId,jdbcType=INTEGER},
+      receiver = #{receiver,jdbcType=VARCHAR},
+      province = #{province,jdbcType=INTEGER},
+      province_name = #{provinceName,jdbcType=VARCHAR},
+      city = #{city,jdbcType=DECIMAL},
+      city_name = #{cityName,jdbcType=VARCHAR},
+      district = #{district,jdbcType=DECIMAL},
+      district_name = #{districtName,jdbcType=VARCHAR},
+      town = #{town,jdbcType=DECIMAL},
+      town_name = #{townName,jdbcType=VARCHAR},
+      addr = #{addr,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=CHAR},
+      zip_code = #{zipCode,jdbcType=CHAR},
+      status = #{status,jdbcType=CHAR}
+    where s_r_a_id = #{sRAId,jdbcType=INTEGER}
+  </update>
+</mapper>
