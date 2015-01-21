@@ -26,22 +26,19 @@
     delete from t_seller_audit
     where audit_id = #{auditId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.afd.model.seller.SellerAudit" >
-    insert into t_seller_audit (audit_id, apply_id, audit_result, 
+  <insert id="insert" parameterType="com.afd.model.seller.SellerAudit" useGeneratedKeys="true" keyProperty="auditId">
+    insert into t_seller_audit (apply_id, audit_result, 
       audit_type, auditor, audit_opinion, 
       audit_date, audit_ip, Column_9
       )
-    values (#{auditId,jdbcType=INTEGER}, #{applyId,jdbcType=INTEGER}, #{auditResult,jdbcType=CHAR}, 
+    values (#{applyId,jdbcType=INTEGER}, #{auditResult,jdbcType=CHAR}, 
       #{auditType,jdbcType=CHAR}, #{auditor,jdbcType=VARCHAR}, #{auditOpinion,jdbcType=VARCHAR}, 
       #{auditDate,jdbcType=TIMESTAMP}, #{auditIp,jdbcType=VARCHAR}, #{column9,jdbcType=CHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.afd.model.seller.SellerAudit" >
+  <insert id="insertSelective" parameterType="com.afd.model.seller.SellerAudit" useGeneratedKeys="true" keyProperty="auditId">
     insert into t_seller_audit
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="auditId != null" >
-        audit_id,
-      </if>
       <if test="applyId != null" >
         apply_id,
       </if>
@@ -67,10 +64,7 @@
         Column_9,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="auditId != null" >
-        #{auditId,jdbcType=INTEGER},
-      </if>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >      
       <if test="applyId != null" >
         #{applyId,jdbcType=INTEGER},
       </if>

@@ -36,15 +36,15 @@
     delete from t_seller_login
     where seller_login_id = #{sellerLoginId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.afd.model.seller.SellerLogin" >
-    insert into t_seller_login (seller_login_id, login_name, login_pwd, 
+  <insert id="insert" parameterType="com.afd.model.seller.SellerLogin" useGeneratedKeys="true" keyProperty="sellerLoginId">
+    insert into t_seller_login (login_name, login_pwd, 
       pwd_key, mobile, nickname, 
       status, type, reg_date, 
       reg_ip, seller_id, seller_apply_id, 
       last_login_date, last_login_ip, freeze_date, 
       freeze_by_name, unfreeze_date, unfreeze_by_name
       )
-    values (#{sellerLoginId,jdbcType=INTEGER}, #{loginName,jdbcType=VARCHAR}, #{loginPwd,jdbcType=VARCHAR}, 
+    values (#{loginName,jdbcType=VARCHAR}, #{loginPwd,jdbcType=VARCHAR}, 
       #{pwdKey,jdbcType=VARCHAR}, #{mobile,jdbcType=CHAR}, #{nickname,jdbcType=VARCHAR}, 
       #{status,jdbcType=CHAR}, #{type,jdbcType=CHAR}, #{regDate,jdbcType=TIMESTAMP}, 
       #{regIp,jdbcType=VARCHAR}, #{sellerId,jdbcType=INTEGER}, #{sellerApplyId,jdbcType=INTEGER}, 
@@ -52,12 +52,9 @@
       #{freezeByName,jdbcType=VARCHAR}, #{unfreezeDate,jdbcType=TIMESTAMP}, #{unfreezeByName,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.afd.model.seller.SellerLogin" >
+  <insert id="insertSelective" parameterType="com.afd.model.seller.SellerLogin" useGeneratedKeys="true" keyProperty="sellerLoginId">
     insert into t_seller_login
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="sellerLoginId != null" >
-        seller_login_id,
-      </if>
       <if test="loginName != null" >
         login_name,
       </if>
@@ -111,9 +108,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="sellerLoginId != null" >
-        #{sellerLoginId,jdbcType=INTEGER},
-      </if>
       <if test="loginName != null" >
         #{loginName,jdbcType=VARCHAR},
       </if>

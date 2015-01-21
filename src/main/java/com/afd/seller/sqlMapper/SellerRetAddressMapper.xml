@@ -33,26 +33,23 @@
     delete from t_seller_ret_address
     where s_r_a_id = #{sRAId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.afd.model.seller.SellerRetAddress" >
-    insert into t_seller_ret_address (s_r_a_id, seller_id, receiver, 
+  <insert id="insert" parameterType="com.afd.model.seller.SellerRetAddress" useGeneratedKeys="true" keyProperty="sRAId">
+    insert into t_seller_ret_address (seller_id, receiver, 
       province, province_name, city, 
       city_name, district, district_name, 
       town, town_name, addr, 
       tel, mobile, zip_code, status
       )
-    values (#{sRAId,jdbcType=INTEGER}, #{sellerId,jdbcType=INTEGER}, #{receiver,jdbcType=VARCHAR}, 
+    values (#{sellerId,jdbcType=INTEGER}, #{receiver,jdbcType=VARCHAR}, 
       #{province,jdbcType=INTEGER}, #{provinceName,jdbcType=VARCHAR}, #{city,jdbcType=DECIMAL}, 
       #{cityName,jdbcType=VARCHAR}, #{district,jdbcType=DECIMAL}, #{districtName,jdbcType=VARCHAR}, 
       #{town,jdbcType=DECIMAL}, #{townName,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, 
       #{tel,jdbcType=VARCHAR}, #{mobile,jdbcType=CHAR}, #{zipCode,jdbcType=CHAR}, #{status,jdbcType=CHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.afd.model.seller.SellerRetAddress" >
+  <insert id="insertSelective" parameterType="com.afd.model.seller.SellerRetAddress" useGeneratedKeys="true" keyProperty="sRAId">
     insert into t_seller_ret_address
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="sRAId != null" >
-        s_r_a_id,
-      </if>
+    <trim prefix="(" suffix=")" suffixOverrides="," >      
       <if test="sellerId != null" >
         seller_id,
       </if>
@@ -99,10 +96,7 @@
         status,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="sRAId != null" >
-        #{sRAId,jdbcType=INTEGER},
-      </if>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >      
       <if test="sellerId != null" >
         #{sellerId,jdbcType=INTEGER},
       </if>

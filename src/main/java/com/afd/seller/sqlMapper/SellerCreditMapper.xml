@@ -43,8 +43,8 @@
     delete from t_seller_credit
     where seller_credit_id = #{sellerCreditId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.afd.model.seller.SellerCredit" >
-    insert into t_seller_credit (seller_credit_id, seller_id, store_name, 
+  <insert id="insert" parameterType="com.afd.model.seller.SellerCredit" useGeneratedKeys="true" keyProperty="sellerCreditId">
+    insert into t_seller_credit (seller_id, store_name, 
       credit_amount, store_level_id, store_level_name, 
       service_score, service_5_num, service_4_num, 
       service_3_num, service_2_num, service_1_num, 
@@ -53,7 +53,7 @@
       logistics_score, logistics_5_num, logistics_4_num, 
       logistics_3_num, logistics_2_num, logistics_1_num
       )
-    values (#{sellerCreditId,jdbcType=INTEGER}, #{sellerId,jdbcType=INTEGER}, #{storeName,jdbcType=VARCHAR}, 
+    values (#{sellerId,jdbcType=INTEGER}, #{storeName,jdbcType=VARCHAR}, 
       #{creditAmount,jdbcType=INTEGER}, #{storeLevelId,jdbcType=INTEGER}, #{storeLevelName,jdbcType=VARCHAR}, 
       #{serviceScore,jdbcType=DECIMAL}, #{service5Num,jdbcType=INTEGER}, #{service4Num,jdbcType=INTEGER}, 
       #{service3Num,jdbcType=INTEGER}, #{service2Num,jdbcType=INTEGER}, #{service1Num,jdbcType=INTEGER}, 
@@ -63,12 +63,9 @@
       #{logistics3Num,jdbcType=INTEGER}, #{logistics2Num,jdbcType=INTEGER}, #{logistics1Num,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.afd.model.seller.SellerCredit" >
+  <insert id="insertSelective" parameterType="com.afd.model.seller.SellerCredit" useGeneratedKeys="true" keyProperty="sellerCreditId">
     insert into t_seller_credit
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="sellerCreditId != null" >
-        seller_credit_id,
-      </if>
       <if test="sellerId != null" >
         seller_id,
       </if>
@@ -140,9 +137,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="sellerCreditId != null" >
-        #{sellerCreditId,jdbcType=INTEGER},
-      </if>
       <if test="sellerId != null" >
         #{sellerId,jdbcType=INTEGER},
       </if>

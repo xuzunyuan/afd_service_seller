@@ -23,20 +23,17 @@
     delete from t_seller_quali
     where seller_quali_id = #{sellerQualiId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.afd.model.seller.SellerQuali" >
-    insert into t_seller_quali (seller_quali_id, seller_id, quali_name, 
+  <insert id="insert" parameterType="com.afd.model.seller.SellerQuali" useGeneratedKeys="true" keyProperty="sellerQualiId">
+    insert into t_seller_quali (seller_id, quali_name, 
       Quail_url, Expire_date, cc_id, 
       cc_name)
-    values (#{sellerQualiId,jdbcType=INTEGER}, #{sellerId,jdbcType=INTEGER}, #{qualiName,jdbcType=VARCHAR}, 
+    values (#{sellerId,jdbcType=INTEGER}, #{qualiName,jdbcType=VARCHAR}, 
       #{quailUrl,jdbcType=VARCHAR}, #{expireDate,jdbcType=VARCHAR}, #{ccId,jdbcType=INTEGER}, 
       #{ccName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.afd.model.seller.SellerQuali" >
+  <insert id="insertSelective" parameterType="com.afd.model.seller.SellerQuali" useGeneratedKeys="true" keyProperty="sellerQualiId">
     insert into t_seller_quali
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="sellerQualiId != null" >
-        seller_quali_id,
-      </if>
+    <trim prefix="(" suffix=")" suffixOverrides="," >      
       <if test="sellerId != null" >
         seller_id,
       </if>
@@ -56,10 +53,7 @@
         cc_name,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="sellerQualiId != null" >
-        #{sellerQualiId,jdbcType=INTEGER},
-      </if>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >      
       <if test="sellerId != null" >
         #{sellerId,jdbcType=INTEGER},
       </if>

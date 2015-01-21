@@ -71,8 +71,8 @@
     delete from t_seller_apply
     where app_id = #{appId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.afd.model.seller.SellerApply" >
-    insert into t_seller_apply (app_id, seller_login_id, apply_type, 
+  <insert id="insert" parameterType="com.afd.model.seller.SellerApply" useGeneratedKeys="true" keyProperty="appId">
+    insert into t_seller_apply (seller_login_id, apply_type, 
       apply_date, apply_ip, status, 
       audit_status, audit_id, co_name, 
       bt_start_date, bt_end_date, bt_geo, 
@@ -87,7 +87,7 @@
       biz_man_position, biz_man_id_no, biz_man_mobile, 
       biz_man_qq, biz_man_email, remark, 
       co_bln)
-    values (#{appId,jdbcType=INTEGER}, #{sellerLoginId,jdbcType=INTEGER}, #{applyType,jdbcType=CHAR}, 
+    values (#{sellerLoginId,jdbcType=INTEGER}, #{applyType,jdbcType=CHAR}, 
       #{applyDate,jdbcType=TIMESTAMP}, #{applyIp,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, 
       #{auditStatus,jdbcType=CHAR}, #{auditId,jdbcType=INTEGER}, #{coName,jdbcType=VARCHAR}, 
       #{btStartDate,jdbcType=TIMESTAMP}, #{btEndDate,jdbcType=TIMESTAMP}, #{btGeo,jdbcType=VARCHAR}, 
@@ -103,12 +103,9 @@
       #{bizManQq,jdbcType=VARCHAR}, #{bizManEmail,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
       #{coBln,jdbcType=VARBINARY})
   </insert>
-  <insert id="insertSelective" parameterType="com.afd.model.seller.SellerApply" >
+  <insert id="insertSelective" parameterType="com.afd.model.seller.SellerApply" useGeneratedKeys="true" keyProperty="appId">
     insert into t_seller_apply
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="appId != null" >
-        app_id,
-      </if>
       <if test="sellerLoginId != null" >
         seller_login_id,
       </if>
@@ -237,9 +234,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="appId != null" >
-        #{appId,jdbcType=INTEGER},
-      </if>
       <if test="sellerLoginId != null" >
         #{sellerLoginId,jdbcType=INTEGER},
       </if>

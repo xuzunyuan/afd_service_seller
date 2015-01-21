@@ -64,8 +64,8 @@
     delete from t_seller
     where seller_id = #{sellerId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.afd.model.seller.Seller" >
-    insert into t_seller (seller_id, seller_login_id, seller_type, 
+  <insert id="insert" parameterType="com.afd.model.seller.Seller" useGeneratedKeys="true" keyProperty="sellerId">
+    insert into t_seller (seller_login_id, seller_type, 
       create_date, status, co_name, 
       co_bln, bt_start_date, bt_end_date, 
       bt_geo, register_capital, biz_scope, 
@@ -80,7 +80,7 @@
       biz_man_mobile, biz_man_qq, biz_man_email, 
       is_paid_deposit, deposit_date, deposit_auditor, 
       deposit_audit_date)
-    values (#{sellerId,jdbcType=INTEGER}, #{sellerLoginId,jdbcType=INTEGER}, #{sellerType,jdbcType=CHAR}, 
+    values (#{sellerLoginId,jdbcType=INTEGER}, #{sellerType,jdbcType=CHAR}, 
       #{createDate,jdbcType=TIMESTAMP}, #{status,jdbcType=CHAR}, #{coName,jdbcType=VARCHAR}, 
       #{coBln,jdbcType=VARCHAR}, #{btStartDate,jdbcType=TIMESTAMP}, #{btEndDate,jdbcType=TIMESTAMP}, 
       #{btGeo,jdbcType=VARCHAR}, #{registerCapital,jdbcType=VARCHAR}, #{bizScope,jdbcType=VARCHAR}, 
@@ -96,12 +96,9 @@
       #{isPaidDeposit,jdbcType=CHAR}, #{depositDate,jdbcType=TIMESTAMP}, #{depositAuditor,jdbcType=VARCHAR}, 
       #{depositAuditDate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.afd.model.seller.Seller" >
+  <insert id="insertSelective" parameterType="com.afd.model.seller.Seller" useGeneratedKeys="true" keyProperty="sellerId">
     insert into t_seller
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="sellerId != null" >
-        seller_id,
-      </if>
+    <trim prefix="(" suffix=")" suffixOverrides="," >      
       <if test="sellerLoginId != null" >
         seller_login_id,
       </if>
@@ -229,10 +226,7 @@
         deposit_audit_date,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="sellerId != null" >
-        #{sellerId,jdbcType=INTEGER},
-      </if>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >      
       <if test="sellerLoginId != null" >
         #{sellerLoginId,jdbcType=INTEGER},
       </if>
