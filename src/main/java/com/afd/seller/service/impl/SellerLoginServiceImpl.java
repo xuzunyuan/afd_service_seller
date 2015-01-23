@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.afd.common.encrypt.MD5Encrypt;
 import com.afd.common.generator.UUIDGenerator;
 import com.afd.common.util.DateUtils;
-import com.afd.common.util.ThreadPoolUtil;
+import com.afd.common.util.ThreadPoolUtils;
 import com.afd.constants.seller.SellerConstants.SellerLogin$Status;
 import com.afd.model.seller.SellerLogin;
 import com.afd.seller.dao.SellerLoginMapper;
@@ -195,7 +195,7 @@ public class SellerLoginServiceImpl implements ISellerLoginService {
 							.getSellerId()));
 				}
 
-				ThreadPoolUtil.execute(new Runnable() {
+				ThreadPoolUtils.execute(new Runnable() {
 					@Override
 					public void run() {
 						registerLoginInfo(login.getSellerLoginId(),
