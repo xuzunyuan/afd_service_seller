@@ -533,4 +533,12 @@
       deposit_audit_date = #{depositAuditDate,jdbcType=TIMESTAMP}
     where seller_id = #{sellerId,jdbcType=INTEGER}
   </update>
+  
+   <!-- 扩展SQL --> 
+  <select id="selectByLoginId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from T_SELLER
+    where SELLER_LOGIN_ID = #{loginId,jdbcType=DECIMAL}
+  </select>
 </mapper>

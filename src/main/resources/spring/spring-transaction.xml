@@ -18,11 +18,17 @@
 
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="get*" read-only="true" propagation="REQUIRED"
+			<tx:method name="login*" read-only="true" propagation="SUPPORTS"
 				rollback-for="Exception" />
-			<tx:method name="query*" read-only="true" propagation="REQUIRED"
+			<tx:method name="get*" read-only="true" propagation="SUPPORTS"
 				rollback-for="Exception" />
-			<tx:method name="select*" read-only="true" propagation="REQUIRED"
+			<tx:method name="query*" read-only="true" propagation="SUPPORTS"
+				rollback-for="Exception" />
+			<tx:method name="select*" read-only="true" propagation="SUPPORTS"
+				rollback-for="Exception" />
+			<tx:method name="exist*" read-only="true" propagation="SUPPORTS"
+				rollback-for="Exception" />
+			<tx:method name="is*" read-only="true" propagation="SUPPORTS"
 				rollback-for="Exception" />
 			<tx:method name="*" propagation="REQUIRED" rollback-for="Exception" />
 		</tx:attributes>

@@ -239,4 +239,20 @@
       unfreeze_by_name = #{unfreezeByName,jdbcType=VARCHAR}
     where seller_login_id = #{sellerLoginId,jdbcType=INTEGER}
   </update>
+  
+    <!-- 扩展SQL -->  
+  <select id="selectByLoginName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from T_SELLER_LOGIN
+    where LOGIN_NAME = #{loginName,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectBySellerId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from T_SELLER_LOGIN
+    where SELLER_ID = #{sellerId,jdbcType=VARCHAR}
+  </select>
+   
 </mapper>
