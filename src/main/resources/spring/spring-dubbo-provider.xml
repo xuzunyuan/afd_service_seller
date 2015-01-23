@@ -12,4 +12,7 @@
 		threadpool="fixed" threads="100" port="9091" buffer="4096" server="netty"
 		client="netty" serialization="hessian2" />
 	<dubbo:provider timeout="3000" retries="0" cluster="failover" loadbalance="random"/>
+	
+	<dubbo:service interface="com.afd.service.seller.ISellerLoginService" ref="sellerLoginService" />
+	<dubbo:service interface="com.afd.service.seller.ISellerService" ref="sellerService" />
 </beans>
