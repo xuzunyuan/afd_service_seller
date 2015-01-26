@@ -18,7 +18,6 @@ import com.afd.model.seller.SellerLogin;
 import com.afd.seller.dao.SellerLoginMapper;
 import com.afd.seller.dao.SellerMapper;
 import com.afd.service.seller.ISellerLoginService;
-import com.afd.service.seller.SellerLoginValidate;
 import com.alibaba.dubbo.common.utils.StringUtils;
 
 /**
