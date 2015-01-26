@@ -75,7 +75,7 @@ public class SellerLoginServiceImpl implements ISellerLoginService {
 	 * .seller.SellerLogin)
 	 */
 	@Override
-	public long newLogin(SellerLogin login) {
+	public int newLogin(SellerLogin login) {
 		// 账户名不能重复，包括已经存在的非正常的账号和手机号
 		assert (login.getLoginName() != null && login.getMobile() != null && login
 				.getNickname() != null);
