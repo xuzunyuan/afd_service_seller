@@ -176,7 +176,7 @@ public class SellerLoginServiceImpl implements ISellerLoginService {
 
 		if (login == null)
 			validate.setValidateStatus(SellerLoginValidate.NOT_EXIST);
-		else if (login.getStatus() == SellerLogin$Status.FREEZED)
+		else if (SellerLogin$Status.FREEZED.equals(login.getStatus()))
 			validate.setValidateStatus(SellerLoginValidate.FREEZED);
 		else {
 			// 密码校验
@@ -190,7 +190,7 @@ public class SellerLoginServiceImpl implements ISellerLoginService {
 				// 通过验证
 				validate.setValidateStatus(SellerLoginValidate.PASSED);
 
-				if (login.getStatus() == SellerLogin$Status.NORAML) {
+				if (SellerLogin$Status.NORAML.equals(login.getStatus())) {
 					validate.setSeller(sellerMapper.selectByPrimaryKey(login
 							.getSellerId()));
 				}
