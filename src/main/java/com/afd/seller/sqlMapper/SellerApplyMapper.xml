@@ -1,500 +1,496 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.afd.seller.dao.SellerApplyMapper" >
-  <resultMap id="BaseResultMap" type="com.afd.model.seller.SellerApply" >
-    <id column="app_id" property="appId" jdbcType="INTEGER" />
-    <result column="seller_login_id" property="sellerLoginId" jdbcType="INTEGER" />
-    <result column="apply_type" property="applyType" jdbcType="CHAR" />
-    <result column="apply_date" property="applyDate" jdbcType="TIMESTAMP" />
-    <result column="apply_ip" property="applyIp" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="CHAR" />
-    <result column="audit_status" property="auditStatus" jdbcType="CHAR" />
-    <result column="audit_id" property="auditId" jdbcType="INTEGER" />
-    <result column="co_name" property="coName" jdbcType="VARCHAR" />
-    <result column="bt_start_date" property="btStartDate" jdbcType="TIMESTAMP" />
-    <result column="bt_end_date" property="btEndDate" jdbcType="TIMESTAMP" />
-    <result column="bt_geo" property="btGeo" jdbcType="VARCHAR" />
-    <result column="register_capital" property="registerCapital" jdbcType="VARCHAR" />
-    <result column="biz_scope" property="bizScope" jdbcType="VARCHAR" />
-    <result column="lp_name" property="lpName" jdbcType="VARCHAR" />
-    <result column="lp_mobile" property="lpMobile" jdbcType="VARCHAR" />
-    <result column="contact_addr" property="contactAddr" jdbcType="VARCHAR" />
-    <result column="fax" property="fax" jdbcType="VARCHAR" />
-    <result column="co_site" property="coSite" jdbcType="VARCHAR" />
-    <result column="co_brand" property="coBrand" jdbcType="VARCHAR" />
-    <result column="bt_img" property="btImg" jdbcType="VARCHAR" />
-    <result column="org_code_img" property="orgCodeImg" jdbcType="VARCHAR" />
-    <result column="tax_img" property="taxImg" jdbcType="VARCHAR" />
-    <result column="id_a_img" property="idAImg" jdbcType="VARCHAR" />
-    <result column="id_b_img" property="idBImg" jdbcType="VARCHAR" />
-    <result column="org_code" property="orgCode" jdbcType="VARCHAR" />
-    <result column="tax_no" property="taxNo" jdbcType="VARCHAR" />
-    <result column="tax_type" property="taxType" jdbcType="CHAR" />
-    <result column="tax_ratio" property="taxRatio" jdbcType="VARCHAR" />
-    <result column="bank_acct_name" property="bankAcctName" jdbcType="VARCHAR" />
-    <result column="bank_acct_no" property="bankAcctNo" jdbcType="VARCHAR" />
-    <result column="branch_name" property="branchName" jdbcType="VARCHAR" />
-    <result column="branch_no" property="branchNo" jdbcType="VARCHAR" />
-    <result column="contract_type" property="contractType" jdbcType="CHAR" />
-    <result column="contract_img" property="contractImg" jdbcType="VARCHAR" />
-    <result column="biz_man_name" property="bizManName" jdbcType="VARCHAR" />
-    <result column="biz_man_position" property="bizManPosition" jdbcType="VARCHAR" />
-    <result column="biz_man_id_no" property="bizManIdNo" jdbcType="VARCHAR" />
-    <result column="biz_man_mobile" property="bizManMobile" jdbcType="VARCHAR" />
-    <result column="biz_man_qq" property="bizManQq" jdbcType="VARCHAR" />
-    <result column="biz_man_email" property="bizManEmail" jdbcType="VARCHAR" />
-    <result column="remark" property="remark" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.afd.seller.dao.SellerApplyMapper">
+  <resultMap id="BaseResultMap" type="com.afd.model.seller.SellerApply">
+    <id column="app_id" jdbcType="INTEGER" property="appId" />
+    <result column="seller_login_id" jdbcType="INTEGER" property="sellerLoginId" />
+    <result column="apply_type" jdbcType="CHAR" property="applyType" />
+    <result column="apply_date" jdbcType="TIMESTAMP" property="applyDate" />
+    <result column="apply_ip" jdbcType="VARCHAR" property="applyIp" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="audit_status" jdbcType="CHAR" property="auditStatus" />
+    <result column="audit_id" jdbcType="INTEGER" property="auditId" />
+    <result column="co_name" jdbcType="VARCHAR" property="coName" />
+    <result column="co_bln" jdbcType="VARCHAR" property="coBln" />
+    <result column="bt_start_date" jdbcType="TIMESTAMP" property="btStartDate" />
+    <result column="bt_end_date" jdbcType="TIMESTAMP" property="btEndDate" />
+    <result column="bt_geo" jdbcType="VARCHAR" property="btGeo" />
+    <result column="register_capital" jdbcType="VARCHAR" property="registerCapital" />
+    <result column="biz_scope" jdbcType="VARCHAR" property="bizScope" />
+    <result column="lp_name" jdbcType="VARCHAR" property="lpName" />
+    <result column="lp_mobile" jdbcType="VARCHAR" property="lpMobile" />
+    <result column="contact_addr" jdbcType="VARCHAR" property="contactAddr" />
+    <result column="fax" jdbcType="VARCHAR" property="fax" />
+    <result column="co_site" jdbcType="VARCHAR" property="coSite" />
+    <result column="co_brand" jdbcType="VARCHAR" property="coBrand" />
+    <result column="bt_img" jdbcType="VARCHAR" property="btImg" />
+    <result column="org_code_img" jdbcType="VARCHAR" property="orgCodeImg" />
+    <result column="tax_img" jdbcType="VARCHAR" property="taxImg" />
+    <result column="id_a_img" jdbcType="VARCHAR" property="idAImg" />
+    <result column="id_b_img" jdbcType="VARCHAR" property="idBImg" />
+    <result column="org_code" jdbcType="VARCHAR" property="orgCode" />
+    <result column="tax_no" jdbcType="VARCHAR" property="taxNo" />
+    <result column="tax_type" jdbcType="CHAR" property="taxType" />
+    <result column="tax_ratio" jdbcType="VARCHAR" property="taxRatio" />
+    <result column="bank_acct_name" jdbcType="VARCHAR" property="bankAcctName" />
+    <result column="bank_acct_no" jdbcType="VARCHAR" property="bankAcctNo" />
+    <result column="branch_name" jdbcType="VARCHAR" property="branchName" />
+    <result column="branch_no" jdbcType="VARCHAR" property="branchNo" />
+    <result column="contract_type" jdbcType="CHAR" property="contractType" />
+    <result column="contract_img" jdbcType="VARCHAR" property="contractImg" />
+    <result column="biz_man_name" jdbcType="VARCHAR" property="bizManName" />
+    <result column="biz_man_position" jdbcType="VARCHAR" property="bizManPosition" />
+    <result column="biz_man_id_no" jdbcType="VARCHAR" property="bizManIdNo" />
+    <result column="biz_man_mobile" jdbcType="VARCHAR" property="bizManMobile" />
+    <result column="biz_man_qq" jdbcType="VARCHAR" property="bizManQq" />
+    <result column="biz_man_email" jdbcType="VARCHAR" property="bizManEmail" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.afd.model.seller.SellerApply" extends="BaseResultMap" >
-    <result column="co_bln" property="coBln" jdbcType="VARBINARY" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     app_id, seller_login_id, apply_type, apply_date, apply_ip, status, audit_status, 
-    audit_id, co_name, bt_start_date, bt_end_date, bt_geo, register_capital, biz_scope, 
-    lp_name, lp_mobile, contact_addr, fax, co_site, co_brand, bt_img, org_code_img, tax_img, 
-    id_a_img, id_b_img, org_code, tax_no, tax_type, tax_ratio, bank_acct_name, bank_acct_no, 
-    branch_name, branch_no, contract_type, contract_img, biz_man_name, biz_man_position, 
-    biz_man_id_no, biz_man_mobile, biz_man_qq, biz_man_email, remark
+    audit_id, co_name, co_bln, bt_start_date, bt_end_date, bt_geo, register_capital, 
+    biz_scope, lp_name, lp_mobile, contact_addr, fax, co_site, co_brand, bt_img, org_code_img, 
+    tax_img, id_a_img, id_b_img, org_code, tax_no, tax_type, tax_ratio, bank_acct_name, 
+    bank_acct_no, branch_name, branch_no, contract_type, contract_img, biz_man_name, 
+    biz_man_position, biz_man_id_no, biz_man_mobile, biz_man_qq, biz_man_email, remark
   </sql>
-  <sql id="Blob_Column_List" >
-    co_bln
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from t_seller_apply
     where app_id = #{appId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_seller_apply
     where app_id = #{appId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.afd.model.seller.SellerApply" useGeneratedKeys="true" keyProperty="appId">
+  <insert id="insert" parameterType="com.afd.model.seller.SellerApply" keyProperty="appId" useGeneratedKeys="true">
     insert into t_seller_apply (seller_login_id, apply_type, 
       apply_date, apply_ip, status, 
       audit_status, audit_id, co_name, 
-      bt_start_date, bt_end_date, bt_geo, 
-      register_capital, biz_scope, lp_name, 
-      lp_mobile, contact_addr, fax, 
-      co_site, co_brand, bt_img, 
-      org_code_img, tax_img, id_a_img, 
-      id_b_img, org_code, tax_no, 
-      tax_type, tax_ratio, bank_acct_name, 
-      bank_acct_no, branch_name, branch_no, 
-      contract_type, contract_img, biz_man_name, 
-      biz_man_position, biz_man_id_no, biz_man_mobile, 
-      biz_man_qq, biz_man_email, remark, 
-      co_bln)
+      co_bln, bt_start_date, bt_end_date, 
+      bt_geo, register_capital, biz_scope, 
+      lp_name, lp_mobile, contact_addr, 
+      fax, co_site, co_brand, 
+      bt_img, org_code_img, tax_img, 
+      id_a_img, id_b_img, org_code, 
+      tax_no, tax_type, tax_ratio, 
+      bank_acct_name, bank_acct_no, branch_name, 
+      branch_no, contract_type, contract_img, 
+      biz_man_name, biz_man_position, biz_man_id_no, 
+      biz_man_mobile, biz_man_qq, biz_man_email, 
+      remark)
     values (#{sellerLoginId,jdbcType=INTEGER}, #{applyType,jdbcType=CHAR}, 
       #{applyDate,jdbcType=TIMESTAMP}, #{applyIp,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, 
       #{auditStatus,jdbcType=CHAR}, #{auditId,jdbcType=INTEGER}, #{coName,jdbcType=VARCHAR}, 
-      #{btStartDate,jdbcType=TIMESTAMP}, #{btEndDate,jdbcType=TIMESTAMP}, #{btGeo,jdbcType=VARCHAR}, 
-      #{registerCapital,jdbcType=VARCHAR}, #{bizScope,jdbcType=VARCHAR}, #{lpName,jdbcType=VARCHAR}, 
-      #{lpMobile,jdbcType=VARCHAR}, #{contactAddr,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, 
-      #{coSite,jdbcType=VARCHAR}, #{coBrand,jdbcType=VARCHAR}, #{btImg,jdbcType=VARCHAR}, 
-      #{orgCodeImg,jdbcType=VARCHAR}, #{taxImg,jdbcType=VARCHAR}, #{idAImg,jdbcType=VARCHAR}, 
-      #{idBImg,jdbcType=VARCHAR}, #{orgCode,jdbcType=VARCHAR}, #{taxNo,jdbcType=VARCHAR}, 
-      #{taxType,jdbcType=CHAR}, #{taxRatio,jdbcType=VARCHAR}, #{bankAcctName,jdbcType=VARCHAR}, 
-      #{bankAcctNo,jdbcType=VARCHAR}, #{branchName,jdbcType=VARCHAR}, #{branchNo,jdbcType=VARCHAR}, 
-      #{contractType,jdbcType=CHAR}, #{contractImg,jdbcType=VARCHAR}, #{bizManName,jdbcType=VARCHAR}, 
-      #{bizManPosition,jdbcType=VARCHAR}, #{bizManIdNo,jdbcType=VARCHAR}, #{bizManMobile,jdbcType=VARCHAR}, 
-      #{bizManQq,jdbcType=VARCHAR}, #{bizManEmail,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
-      #{coBln,jdbcType=VARBINARY})
+      #{coBln,jdbcType=VARCHAR}, #{btStartDate,jdbcType=TIMESTAMP}, #{btEndDate,jdbcType=TIMESTAMP}, 
+      #{btGeo,jdbcType=VARCHAR}, #{registerCapital,jdbcType=VARCHAR}, #{bizScope,jdbcType=VARCHAR}, 
+      #{lpName,jdbcType=VARCHAR}, #{lpMobile,jdbcType=VARCHAR}, #{contactAddr,jdbcType=VARCHAR}, 
+      #{fax,jdbcType=VARCHAR}, #{coSite,jdbcType=VARCHAR}, #{coBrand,jdbcType=VARCHAR}, 
+      #{btImg,jdbcType=VARCHAR}, #{orgCodeImg,jdbcType=VARCHAR}, #{taxImg,jdbcType=VARCHAR}, 
+      #{idAImg,jdbcType=VARCHAR}, #{idBImg,jdbcType=VARCHAR}, #{orgCode,jdbcType=VARCHAR}, 
+      #{taxNo,jdbcType=VARCHAR}, #{taxType,jdbcType=CHAR}, #{taxRatio,jdbcType=VARCHAR}, 
+      #{bankAcctName,jdbcType=VARCHAR}, #{bankAcctNo,jdbcType=VARCHAR}, #{branchName,jdbcType=VARCHAR}, 
+      #{branchNo,jdbcType=VARCHAR}, #{contractType,jdbcType=CHAR}, #{contractImg,jdbcType=VARCHAR}, 
+      #{bizManName,jdbcType=VARCHAR}, #{bizManPosition,jdbcType=VARCHAR}, #{bizManIdNo,jdbcType=VARCHAR}, 
+      #{bizManMobile,jdbcType=VARCHAR}, #{bizManQq,jdbcType=VARCHAR}, #{bizManEmail,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.afd.model.seller.SellerApply" useGeneratedKeys="true" keyProperty="appId">
+  <insert id="insertSelective" parameterType="com.afd.model.seller.SellerApply" keyProperty="appId" useGeneratedKeys="true">
     insert into t_seller_apply
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="sellerLoginId != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sellerLoginId != null">
         seller_login_id,
       </if>
-      <if test="applyType != null" >
+      <if test="applyType != null">
         apply_type,
       </if>
-      <if test="applyDate != null" >
+      <if test="applyDate != null">
         apply_date,
       </if>
-      <if test="applyIp != null" >
+      <if test="applyIp != null">
         apply_ip,
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         status,
       </if>
-      <if test="auditStatus != null" >
+      <if test="auditStatus != null">
         audit_status,
       </if>
-      <if test="auditId != null" >
+      <if test="auditId != null">
         audit_id,
       </if>
-      <if test="coName != null" >
+      <if test="coName != null">
         co_name,
       </if>
-      <if test="btStartDate != null" >
-        bt_start_date,
-      </if>
-      <if test="btEndDate != null" >
-        bt_end_date,
-      </if>
-      <if test="btGeo != null" >
-        bt_geo,
-      </if>
-      <if test="registerCapital != null" >
-        register_capital,
-      </if>
-      <if test="bizScope != null" >
-        biz_scope,
-      </if>
-      <if test="lpName != null" >
-        lp_name,
-      </if>
-      <if test="lpMobile != null" >
-        lp_mobile,
-      </if>
-      <if test="contactAddr != null" >
-        contact_addr,
-      </if>
-      <if test="fax != null" >
-        fax,
-      </if>
-      <if test="coSite != null" >
-        co_site,
-      </if>
-      <if test="coBrand != null" >
-        co_brand,
-      </if>
-      <if test="btImg != null" >
-        bt_img,
-      </if>
-      <if test="orgCodeImg != null" >
-        org_code_img,
-      </if>
-      <if test="taxImg != null" >
-        tax_img,
-      </if>
-      <if test="idAImg != null" >
-        id_a_img,
-      </if>
-      <if test="idBImg != null" >
-        id_b_img,
-      </if>
-      <if test="orgCode != null" >
-        org_code,
-      </if>
-      <if test="taxNo != null" >
-        tax_no,
-      </if>
-      <if test="taxType != null" >
-        tax_type,
-      </if>
-      <if test="taxRatio != null" >
-        tax_ratio,
-      </if>
-      <if test="bankAcctName != null" >
-        bank_acct_name,
-      </if>
-      <if test="bankAcctNo != null" >
-        bank_acct_no,
-      </if>
-      <if test="branchName != null" >
-        branch_name,
-      </if>
-      <if test="branchNo != null" >
-        branch_no,
-      </if>
-      <if test="contractType != null" >
-        contract_type,
-      </if>
-      <if test="contractImg != null" >
-        contract_img,
-      </if>
-      <if test="bizManName != null" >
-        biz_man_name,
-      </if>
-      <if test="bizManPosition != null" >
-        biz_man_position,
-      </if>
-      <if test="bizManIdNo != null" >
-        biz_man_id_no,
-      </if>
-      <if test="bizManMobile != null" >
-        biz_man_mobile,
-      </if>
-      <if test="bizManQq != null" >
-        biz_man_qq,
-      </if>
-      <if test="bizManEmail != null" >
-        biz_man_email,
-      </if>
-      <if test="remark != null" >
-        remark,
-      </if>
-      <if test="coBln != null" >
+      <if test="coBln != null">
         co_bln,
       </if>
+      <if test="btStartDate != null">
+        bt_start_date,
+      </if>
+      <if test="btEndDate != null">
+        bt_end_date,
+      </if>
+      <if test="btGeo != null">
+        bt_geo,
+      </if>
+      <if test="registerCapital != null">
+        register_capital,
+      </if>
+      <if test="bizScope != null">
+        biz_scope,
+      </if>
+      <if test="lpName != null">
+        lp_name,
+      </if>
+      <if test="lpMobile != null">
+        lp_mobile,
+      </if>
+      <if test="contactAddr != null">
+        contact_addr,
+      </if>
+      <if test="fax != null">
+        fax,
+      </if>
+      <if test="coSite != null">
+        co_site,
+      </if>
+      <if test="coBrand != null">
+        co_brand,
+      </if>
+      <if test="btImg != null">
+        bt_img,
+      </if>
+      <if test="orgCodeImg != null">
+        org_code_img,
+      </if>
+      <if test="taxImg != null">
+        tax_img,
+      </if>
+      <if test="idAImg != null">
+        id_a_img,
+      </if>
+      <if test="idBImg != null">
+        id_b_img,
+      </if>
+      <if test="orgCode != null">
+        org_code,
+      </if>
+      <if test="taxNo != null">
+        tax_no,
+      </if>
+      <if test="taxType != null">
+        tax_type,
+      </if>
+      <if test="taxRatio != null">
+        tax_ratio,
+      </if>
+      <if test="bankAcctName != null">
+        bank_acct_name,
+      </if>
+      <if test="bankAcctNo != null">
+        bank_acct_no,
+      </if>
+      <if test="branchName != null">
+        branch_name,
+      </if>
+      <if test="branchNo != null">
+        branch_no,
+      </if>
+      <if test="contractType != null">
+        contract_type,
+      </if>
+      <if test="contractImg != null">
+        contract_img,
+      </if>
+      <if test="bizManName != null">
+        biz_man_name,
+      </if>
+      <if test="bizManPosition != null">
+        biz_man_position,
+      </if>
+      <if test="bizManIdNo != null">
+        biz_man_id_no,
+      </if>
+      <if test="bizManMobile != null">
+        biz_man_mobile,
+      </if>
+      <if test="bizManQq != null">
+        biz_man_qq,
+      </if>
+      <if test="bizManEmail != null">
+        biz_man_email,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="sellerLoginId != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="appId != null">
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="sellerLoginId != null">
         #{sellerLoginId,jdbcType=INTEGER},
       </if>
-      <if test="applyType != null" >
+      <if test="applyType != null">
         #{applyType,jdbcType=CHAR},
       </if>
-      <if test="applyDate != null" >
+      <if test="applyDate != null">
         #{applyDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="applyIp != null" >
+      <if test="applyIp != null">
         #{applyIp,jdbcType=VARCHAR},
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         #{status,jdbcType=CHAR},
       </if>
-      <if test="auditStatus != null" >
+      <if test="auditStatus != null">
         #{auditStatus,jdbcType=CHAR},
       </if>
-      <if test="auditId != null" >
+      <if test="auditId != null">
         #{auditId,jdbcType=INTEGER},
       </if>
-      <if test="coName != null" >
+      <if test="coName != null">
         #{coName,jdbcType=VARCHAR},
       </if>
-      <if test="btStartDate != null" >
+      <if test="coBln != null">
+        #{coBln,jdbcType=VARCHAR},
+      </if>
+      <if test="btStartDate != null">
         #{btStartDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="btEndDate != null" >
+      <if test="btEndDate != null">
         #{btEndDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="btGeo != null" >
+      <if test="btGeo != null">
         #{btGeo,jdbcType=VARCHAR},
       </if>
-      <if test="registerCapital != null" >
+      <if test="registerCapital != null">
         #{registerCapital,jdbcType=VARCHAR},
       </if>
-      <if test="bizScope != null" >
+      <if test="bizScope != null">
         #{bizScope,jdbcType=VARCHAR},
       </if>
-      <if test="lpName != null" >
+      <if test="lpName != null">
         #{lpName,jdbcType=VARCHAR},
       </if>
-      <if test="lpMobile != null" >
+      <if test="lpMobile != null">
         #{lpMobile,jdbcType=VARCHAR},
       </if>
-      <if test="contactAddr != null" >
+      <if test="contactAddr != null">
         #{contactAddr,jdbcType=VARCHAR},
       </if>
-      <if test="fax != null" >
+      <if test="fax != null">
         #{fax,jdbcType=VARCHAR},
       </if>
-      <if test="coSite != null" >
+      <if test="coSite != null">
         #{coSite,jdbcType=VARCHAR},
       </if>
-      <if test="coBrand != null" >
+      <if test="coBrand != null">
         #{coBrand,jdbcType=VARCHAR},
       </if>
-      <if test="btImg != null" >
+      <if test="btImg != null">
         #{btImg,jdbcType=VARCHAR},
       </if>
-      <if test="orgCodeImg != null" >
+      <if test="orgCodeImg != null">
         #{orgCodeImg,jdbcType=VARCHAR},
       </if>
-      <if test="taxImg != null" >
+      <if test="taxImg != null">
         #{taxImg,jdbcType=VARCHAR},
       </if>
-      <if test="idAImg != null" >
+      <if test="idAImg != null">
         #{idAImg,jdbcType=VARCHAR},
       </if>
-      <if test="idBImg != null" >
+      <if test="idBImg != null">
         #{idBImg,jdbcType=VARCHAR},
       </if>
-      <if test="orgCode != null" >
+      <if test="orgCode != null">
         #{orgCode,jdbcType=VARCHAR},
       </if>
-      <if test="taxNo != null" >
+      <if test="taxNo != null">
         #{taxNo,jdbcType=VARCHAR},
       </if>
-      <if test="taxType != null" >
+      <if test="taxType != null">
         #{taxType,jdbcType=CHAR},
       </if>
-      <if test="taxRatio != null" >
+      <if test="taxRatio != null">
         #{taxRatio,jdbcType=VARCHAR},
       </if>
-      <if test="bankAcctName != null" >
+      <if test="bankAcctName != null">
         #{bankAcctName,jdbcType=VARCHAR},
       </if>
-      <if test="bankAcctNo != null" >
+      <if test="bankAcctNo != null">
         #{bankAcctNo,jdbcType=VARCHAR},
       </if>
-      <if test="branchName != null" >
+      <if test="branchName != null">
         #{branchName,jdbcType=VARCHAR},
       </if>
-      <if test="branchNo != null" >
+      <if test="branchNo != null">
         #{branchNo,jdbcType=VARCHAR},
       </if>
-      <if test="contractType != null" >
+      <if test="contractType != null">
         #{contractType,jdbcType=CHAR},
       </if>
-      <if test="contractImg != null" >
+      <if test="contractImg != null">
         #{contractImg,jdbcType=VARCHAR},
       </if>
-      <if test="bizManName != null" >
+      <if test="bizManName != null">
         #{bizManName,jdbcType=VARCHAR},
       </if>
-      <if test="bizManPosition != null" >
+      <if test="bizManPosition != null">
         #{bizManPosition,jdbcType=VARCHAR},
       </if>
-      <if test="bizManIdNo != null" >
+      <if test="bizManIdNo != null">
         #{bizManIdNo,jdbcType=VARCHAR},
       </if>
-      <if test="bizManMobile != null" >
+      <if test="bizManMobile != null">
         #{bizManMobile,jdbcType=VARCHAR},
       </if>
-      <if test="bizManQq != null" >
+      <if test="bizManQq != null">
         #{bizManQq,jdbcType=VARCHAR},
       </if>
-      <if test="bizManEmail != null" >
+      <if test="bizManEmail != null">
         #{bizManEmail,jdbcType=VARCHAR},
       </if>
-      <if test="remark != null" >
+      <if test="remark != null">
         #{remark,jdbcType=VARCHAR},
-      </if>
-      <if test="coBln != null" >
-        #{coBln,jdbcType=VARBINARY},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.afd.model.seller.SellerApply" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.afd.model.seller.SellerApply">
     update t_seller_apply
-    <set >
-      <if test="sellerLoginId != null" >
+    <set>
+      <if test="sellerLoginId != null">
         seller_login_id = #{sellerLoginId,jdbcType=INTEGER},
       </if>
-      <if test="applyType != null" >
+      <if test="applyType != null">
         apply_type = #{applyType,jdbcType=CHAR},
       </if>
-      <if test="applyDate != null" >
+      <if test="applyDate != null">
         apply_date = #{applyDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="applyIp != null" >
+      <if test="applyIp != null">
         apply_ip = #{applyIp,jdbcType=VARCHAR},
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         status = #{status,jdbcType=CHAR},
       </if>
-      <if test="auditStatus != null" >
+      <if test="auditStatus != null">
         audit_status = #{auditStatus,jdbcType=CHAR},
       </if>
-      <if test="auditId != null" >
+      <if test="auditId != null">
         audit_id = #{auditId,jdbcType=INTEGER},
       </if>
-      <if test="coName != null" >
+      <if test="coName != null">
         co_name = #{coName,jdbcType=VARCHAR},
       </if>
-      <if test="btStartDate != null" >
+      <if test="coBln != null">
+        co_bln = #{coBln,jdbcType=VARCHAR},
+      </if>
+      <if test="btStartDate != null">
         bt_start_date = #{btStartDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="btEndDate != null" >
+      <if test="btEndDate != null">
         bt_end_date = #{btEndDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="btGeo != null" >
+      <if test="btGeo != null">
         bt_geo = #{btGeo,jdbcType=VARCHAR},
       </if>
-      <if test="registerCapital != null" >
+      <if test="registerCapital != null">
         register_capital = #{registerCapital,jdbcType=VARCHAR},
       </if>
-      <if test="bizScope != null" >
+      <if test="bizScope != null">
         biz_scope = #{bizScope,jdbcType=VARCHAR},
       </if>
-      <if test="lpName != null" >
+      <if test="lpName != null">
         lp_name = #{lpName,jdbcType=VARCHAR},
       </if>
-      <if test="lpMobile != null" >
+      <if test="lpMobile != null">
         lp_mobile = #{lpMobile,jdbcType=VARCHAR},
       </if>
-      <if test="contactAddr != null" >
+      <if test="contactAddr != null">
         contact_addr = #{contactAddr,jdbcType=VARCHAR},
       </if>
-      <if test="fax != null" >
+      <if test="fax != null">
         fax = #{fax,jdbcType=VARCHAR},
       </if>
-      <if test="coSite != null" >
+      <if test="coSite != null">
         co_site = #{coSite,jdbcType=VARCHAR},
       </if>
-      <if test="coBrand != null" >
+      <if test="coBrand != null">
         co_brand = #{coBrand,jdbcType=VARCHAR},
       </if>
-      <if test="btImg != null" >
+      <if test="btImg != null">
         bt_img = #{btImg,jdbcType=VARCHAR},
       </if>
-      <if test="orgCodeImg != null" >
+      <if test="orgCodeImg != null">
         org_code_img = #{orgCodeImg,jdbcType=VARCHAR},
       </if>
-      <if test="taxImg != null" >
+      <if test="taxImg != null">
         tax_img = #{taxImg,jdbcType=VARCHAR},
       </if>
-      <if test="idAImg != null" >
+      <if test="idAImg != null">
         id_a_img = #{idAImg,jdbcType=VARCHAR},
       </if>
-      <if test="idBImg != null" >
+      <if test="idBImg != null">
         id_b_img = #{idBImg,jdbcType=VARCHAR},
       </if>
-      <if test="orgCode != null" >
+      <if test="orgCode != null">
         org_code = #{orgCode,jdbcType=VARCHAR},
       </if>
-      <if test="taxNo != null" >
+      <if test="taxNo != null">
         tax_no = #{taxNo,jdbcType=VARCHAR},
       </if>
-      <if test="taxType != null" >
+      <if test="taxType != null">
         tax_type = #{taxType,jdbcType=CHAR},
       </if>
-      <if test="taxRatio != null" >
+      <if test="taxRatio != null">
         tax_ratio = #{taxRatio,jdbcType=VARCHAR},
       </if>
-      <if test="bankAcctName != null" >
+      <if test="bankAcctName != null">
         bank_acct_name = #{bankAcctName,jdbcType=VARCHAR},
       </if>
-      <if test="bankAcctNo != null" >
+      <if test="bankAcctNo != null">
         bank_acct_no = #{bankAcctNo,jdbcType=VARCHAR},
       </if>
-      <if test="branchName != null" >
+      <if test="branchName != null">
         branch_name = #{branchName,jdbcType=VARCHAR},
       </if>
-      <if test="branchNo != null" >
+      <if test="branchNo != null">
         branch_no = #{branchNo,jdbcType=VARCHAR},
       </if>
-      <if test="contractType != null" >
+      <if test="contractType != null">
         contract_type = #{contractType,jdbcType=CHAR},
       </if>
-      <if test="contractImg != null" >
+      <if test="contractImg != null">
         contract_img = #{contractImg,jdbcType=VARCHAR},
       </if>
-      <if test="bizManName != null" >
+      <if test="bizManName != null">
         biz_man_name = #{bizManName,jdbcType=VARCHAR},
       </if>
-      <if test="bizManPosition != null" >
+      <if test="bizManPosition != null">
         biz_man_position = #{bizManPosition,jdbcType=VARCHAR},
       </if>
-      <if test="bizManIdNo != null" >
+      <if test="bizManIdNo != null">
         biz_man_id_no = #{bizManIdNo,jdbcType=VARCHAR},
       </if>
-      <if test="bizManMobile != null" >
+      <if test="bizManMobile != null">
         biz_man_mobile = #{bizManMobile,jdbcType=VARCHAR},
       </if>
-      <if test="bizManQq != null" >
+      <if test="bizManQq != null">
         biz_man_qq = #{bizManQq,jdbcType=VARCHAR},
       </if>
-      <if test="bizManEmail != null" >
+      <if test="bizManEmail != null">
         biz_man_email = #{bizManEmail,jdbcType=VARCHAR},
       </if>
-      <if test="remark != null" >
+      <if test="remark != null">
         remark = #{remark,jdbcType=VARCHAR},
-      </if>
-      <if test="coBln != null" >
-        co_bln = #{coBln,jdbcType=VARBINARY},
       </if>
     </set>
     where app_id = #{appId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.afd.model.seller.SellerApply" >
+  <update id="updateByPrimaryKey" parameterType="com.afd.model.seller.SellerApply">
     update t_seller_apply
     set seller_login_id = #{sellerLoginId,jdbcType=INTEGER},
       apply_type = #{applyType,jdbcType=CHAR},
@@ -504,52 +500,7 @@
       audit_status = #{auditStatus,jdbcType=CHAR},
       audit_id = #{auditId,jdbcType=INTEGER},
       co_name = #{coName,jdbcType=VARCHAR},
-      bt_start_date = #{btStartDate,jdbcType=TIMESTAMP},
-      bt_end_date = #{btEndDate,jdbcType=TIMESTAMP},
-      bt_geo = #{btGeo,jdbcType=VARCHAR},
-      register_capital = #{registerCapital,jdbcType=VARCHAR},
-      biz_scope = #{bizScope,jdbcType=VARCHAR},
-      lp_name = #{lpName,jdbcType=VARCHAR},
-      lp_mobile = #{lpMobile,jdbcType=VARCHAR},
-      contact_addr = #{contactAddr,jdbcType=VARCHAR},
-      fax = #{fax,jdbcType=VARCHAR},
-      co_site = #{coSite,jdbcType=VARCHAR},
-      co_brand = #{coBrand,jdbcType=VARCHAR},
-      bt_img = #{btImg,jdbcType=VARCHAR},
-      org_code_img = #{orgCodeImg,jdbcType=VARCHAR},
-      tax_img = #{taxImg,jdbcType=VARCHAR},
-      id_a_img = #{idAImg,jdbcType=VARCHAR},
-      id_b_img = #{idBImg,jdbcType=VARCHAR},
-      org_code = #{orgCode,jdbcType=VARCHAR},
-      tax_no = #{taxNo,jdbcType=VARCHAR},
-      tax_type = #{taxType,jdbcType=CHAR},
-      tax_ratio = #{taxRatio,jdbcType=VARCHAR},
-      bank_acct_name = #{bankAcctName,jdbcType=VARCHAR},
-      bank_acct_no = #{bankAcctNo,jdbcType=VARCHAR},
-      branch_name = #{branchName,jdbcType=VARCHAR},
-      branch_no = #{branchNo,jdbcType=VARCHAR},
-      contract_type = #{contractType,jdbcType=CHAR},
-      contract_img = #{contractImg,jdbcType=VARCHAR},
-      biz_man_name = #{bizManName,jdbcType=VARCHAR},
-      biz_man_position = #{bizManPosition,jdbcType=VARCHAR},
-      biz_man_id_no = #{bizManIdNo,jdbcType=VARCHAR},
-      biz_man_mobile = #{bizManMobile,jdbcType=VARCHAR},
-      biz_man_qq = #{bizManQq,jdbcType=VARCHAR},
-      biz_man_email = #{bizManEmail,jdbcType=VARCHAR},
-      remark = #{remark,jdbcType=VARCHAR},
-      co_bln = #{coBln,jdbcType=VARBINARY}
-    where app_id = #{appId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.afd.model.seller.SellerApply" >
-    update t_seller_apply
-    set seller_login_id = #{sellerLoginId,jdbcType=INTEGER},
-      apply_type = #{applyType,jdbcType=CHAR},
-      apply_date = #{applyDate,jdbcType=TIMESTAMP},
-      apply_ip = #{applyIp,jdbcType=VARCHAR},
-      status = #{status,jdbcType=CHAR},
-      audit_status = #{auditStatus,jdbcType=CHAR},
-      audit_id = #{auditId,jdbcType=INTEGER},
-      co_name = #{coName,jdbcType=VARCHAR},
+      co_bln = #{coBln,jdbcType=VARCHAR},
       bt_start_date = #{btStartDate,jdbcType=TIMESTAMP},
       bt_end_date = #{btEndDate,jdbcType=TIMESTAMP},
       bt_geo = #{btGeo,jdbcType=VARCHAR},
@@ -584,5 +535,5 @@
       biz_man_email = #{bizManEmail,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}
     where app_id = #{appId,jdbcType=INTEGER}
-  </update>
+  </update> 
 </mapper>
