@@ -20,7 +20,7 @@
 		<javaModelGenerator targetPackage="com.afd.model.seller"
 			targetProject="afd_service">
 			<property name="enableSubPackages" value="true" />
-			<property name="trimStrings" value="true" />
+			<property name="trimStrings" value="false" />
 		</javaModelGenerator>
 		<sqlMapGenerator targetPackage="com.afd.seller.sqlMapper"
 			targetProject="afd_service_seller">
@@ -36,6 +36,40 @@
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
 		</table>
-		
+		<table tableName="t_seller" domainObjectName="Seller"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+		<table tableName="t_seller_apply_quali" domainObjectName="SellerApplyQuali"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+		<table tableName="t_seller_audit" domainObjectName="SellerAudit"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+		<table tableName="t_seller_credit" domainObjectName="SellerCredit"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+		<table tableName="t_seller_login" domainObjectName="SellerLogin"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+		<table tableName="t_seller_quali" domainObjectName="SellerQuali"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+		<table tableName="t_seller_ret_address" domainObjectName="SellerRetAddress"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
 	</context>
 </generatorConfiguration>

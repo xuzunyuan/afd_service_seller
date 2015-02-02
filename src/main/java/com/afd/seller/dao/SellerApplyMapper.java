@@ -14,4 +14,5 @@ public interface SellerApplyMapper {
 	int updateByPrimaryKeySelective(SellerApply record);
 
 	int updateByPrimaryKey(SellerApply record);
+
 }

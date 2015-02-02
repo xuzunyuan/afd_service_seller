@@ -1,29 +1,29 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.afd.seller.dao.SellerQualiMapper" >
-  <resultMap id="BaseResultMap" type="com.afd.model.seller.SellerQuali" >
-    <id column="seller_quali_id" property="sellerQualiId" jdbcType="INTEGER" />
-    <result column="seller_id" property="sellerId" jdbcType="INTEGER" />
-    <result column="quali_name" property="qualiName" jdbcType="VARCHAR" />
-    <result column="Quail_url" property="quailUrl" jdbcType="VARCHAR" />
-    <result column="Expire_date" property="expireDate" jdbcType="VARCHAR" />
-    <result column="cc_id" property="ccId" jdbcType="INTEGER" />
-    <result column="cc_name" property="ccName" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.afd.seller.dao.SellerQualiMapper">
+  <resultMap id="BaseResultMap" type="com.afd.model.seller.SellerQuali">
+    <id column="seller_quali_id" jdbcType="INTEGER" property="sellerQualiId" />
+    <result column="seller_id" jdbcType="INTEGER" property="sellerId" />
+    <result column="quali_name" jdbcType="VARCHAR" property="qualiName" />
+    <result column="Quail_url" jdbcType="VARCHAR" property="quailUrl" />
+    <result column="Expire_date" jdbcType="VARCHAR" property="expireDate" />
+    <result column="cc_id" jdbcType="INTEGER" property="ccId" />
+    <result column="cc_name" jdbcType="VARCHAR" property="ccName" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     seller_quali_id, seller_id, quali_name, Quail_url, Expire_date, cc_id, cc_name
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_seller_quali
     where seller_quali_id = #{sellerQualiId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_seller_quali
     where seller_quali_id = #{sellerQualiId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.afd.model.seller.SellerQuali" useGeneratedKeys="true" keyProperty="sellerQualiId">
+  <insert id="insert" keyProperty="sellerQualiId" parameterType="com.afd.model.seller.SellerQuali" useGeneratedKeys="true">
     insert into t_seller_quali (seller_id, quali_name, 
       Quail_url, Expire_date, cc_id, 
       cc_name)
@@ -31,74 +31,74 @@
       #{quailUrl,jdbcType=VARCHAR}, #{expireDate,jdbcType=VARCHAR}, #{ccId,jdbcType=INTEGER}, 
       #{ccName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.afd.model.seller.SellerQuali" useGeneratedKeys="true" keyProperty="sellerQualiId">
+  <insert id="insertSelective" keyProperty="sellerQualiId" parameterType="com.afd.model.seller.SellerQuali" useGeneratedKeys="true">
     insert into t_seller_quali
-    <trim prefix="(" suffix=")" suffixOverrides="," >      
-      <if test="sellerId != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">      
+      <if test="sellerId != null">
         seller_id,
       </if>
-      <if test="qualiName != null" >
+      <if test="qualiName != null">
         quali_name,
       </if>
-      <if test="quailUrl != null" >
+      <if test="quailUrl != null">
         Quail_url,
       </if>
-      <if test="expireDate != null" >
+      <if test="expireDate != null">
         Expire_date,
       </if>
-      <if test="ccId != null" >
+      <if test="ccId != null">
         cc_id,
       </if>
-      <if test="ccName != null" >
+      <if test="ccName != null">
         cc_name,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >      
-      <if test="sellerId != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">     
+      <if test="sellerId != null">
         #{sellerId,jdbcType=INTEGER},
       </if>
-      <if test="qualiName != null" >
+      <if test="qualiName != null">
         #{qualiName,jdbcType=VARCHAR},
       </if>
-      <if test="quailUrl != null" >
+      <if test="quailUrl != null">
         #{quailUrl,jdbcType=VARCHAR},
       </if>
-      <if test="expireDate != null" >
+      <if test="expireDate != null">
         #{expireDate,jdbcType=VARCHAR},
       </if>
-      <if test="ccId != null" >
+      <if test="ccId != null">
         #{ccId,jdbcType=INTEGER},
       </if>
-      <if test="ccName != null" >
+      <if test="ccName != null">
         #{ccName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.afd.model.seller.SellerQuali" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.afd.model.seller.SellerQuali">
     update t_seller_quali
-    <set >
-      <if test="sellerId != null" >
+    <set>
+      <if test="sellerId != null">
         seller_id = #{sellerId,jdbcType=INTEGER},
       </if>
-      <if test="qualiName != null" >
+      <if test="qualiName != null">
         quali_name = #{qualiName,jdbcType=VARCHAR},
       </if>
-      <if test="quailUrl != null" >
+      <if test="quailUrl != null">
         Quail_url = #{quailUrl,jdbcType=VARCHAR},
       </if>
-      <if test="expireDate != null" >
+      <if test="expireDate != null">
         Expire_date = #{expireDate,jdbcType=VARCHAR},
       </if>
-      <if test="ccId != null" >
+      <if test="ccId != null">
         cc_id = #{ccId,jdbcType=INTEGER},
       </if>
-      <if test="ccName != null" >
+      <if test="ccName != null">
         cc_name = #{ccName,jdbcType=VARCHAR},
       </if>
     </set>
     where seller_quali_id = #{sellerQualiId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.afd.model.seller.SellerQuali" >
+  <update id="updateByPrimaryKey" parameterType="com.afd.model.seller.SellerQuali">
     update t_seller_quali
     set seller_id = #{sellerId,jdbcType=INTEGER},
       quali_name = #{qualiName,jdbcType=VARCHAR},
@@ -107,5 +107,5 @@
       cc_id = #{ccId,jdbcType=INTEGER},
       cc_name = #{ccName,jdbcType=VARCHAR}
     where seller_quali_id = #{sellerQualiId,jdbcType=INTEGER}
-  </update>
+  </update>  
 </mapper>

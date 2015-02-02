@@ -22,7 +22,7 @@ public interface SellerLoginMapper {
 
 	/** 扩展方法 **/
 
-	// 根据账户名查找账号
+	// 根据账户名查找账�?
 	SellerLogin selectByLoginName(String loginName);
 
 	// 根据卖家ID查询账号
@@ -32,7 +32,7 @@ public interface SellerLoginMapper {
 	@Select("select 1 from t_seller_login where login_name = #{0} limit 1")
 	Integer existLoginName(String loginName);
 
-	// 卖家昵称是否已使用
+	// 卖家昵称是否已使�?
 	@Select("select 1 from t_seller_login where nickname = #{0} limit 1")
 	Integer existNickname(String nickname);
 

@@ -45,6 +45,8 @@
     <result column="biz_man_qq" jdbcType="VARCHAR" property="bizManQq" />
     <result column="biz_man_email" jdbcType="VARCHAR" property="bizManEmail" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="bank_license_img" jdbcType="VARCHAR" property="bankLicenseImg" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
   </resultMap>
   <sql id="Base_Column_List">
     app_id, seller_login_id, apply_type, apply_date, apply_ip, status, audit_status, 
@@ -52,7 +54,8 @@
     biz_scope, lp_name, lp_mobile, contact_addr, fax, co_site, co_brand, bt_img, org_code_img, 
     tax_img, id_a_img, id_b_img, org_code, tax_no, tax_type, tax_ratio, bank_acct_name, 
     bank_acct_no, branch_name, branch_no, contract_type, contract_img, biz_man_name, 
-    biz_man_position, biz_man_id_no, biz_man_mobile, biz_man_qq, biz_man_email, remark
+    biz_man_position, biz_man_id_no, biz_man_mobile, biz_man_qq, biz_man_email, remark, 
+    bank_license_img, tel
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -64,7 +67,7 @@
     delete from t_seller_apply
     where app_id = #{appId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.afd.model.seller.SellerApply" keyProperty="appId" useGeneratedKeys="true">
+  <insert id="insert" keyProperty="appId" parameterType="com.afd.model.seller.SellerApply" useGeneratedKeys="true">
     insert into t_seller_apply (seller_login_id, apply_type, 
       apply_date, apply_ip, status, 
       audit_status, audit_id, co_name, 
@@ -79,7 +82,8 @@
       branch_no, contract_type, contract_img, 
       biz_man_name, biz_man_position, biz_man_id_no, 
       biz_man_mobile, biz_man_qq, biz_man_email, 
-      remark)
+      remark, bank_license_img, tel
+      )
     values (#{sellerLoginId,jdbcType=INTEGER}, #{applyType,jdbcType=CHAR}, 
       #{applyDate,jdbcType=TIMESTAMP}, #{applyIp,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, 
       #{auditStatus,jdbcType=CHAR}, #{auditId,jdbcType=INTEGER}, #{coName,jdbcType=VARCHAR}, 
@@ -94,9 +98,10 @@
       #{branchNo,jdbcType=VARCHAR}, #{contractType,jdbcType=CHAR}, #{contractImg,jdbcType=VARCHAR}, 
       #{bizManName,jdbcType=VARCHAR}, #{bizManPosition,jdbcType=VARCHAR}, #{bizManIdNo,jdbcType=VARCHAR}, 
       #{bizManMobile,jdbcType=VARCHAR}, #{bizManQq,jdbcType=VARCHAR}, #{bizManEmail,jdbcType=VARCHAR}, 
-      #{remark,jdbcType=VARCHAR})
+      #{remark,jdbcType=VARCHAR}, #{bankLicenseImg,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.afd.model.seller.SellerApply" keyProperty="appId" useGeneratedKeys="true">
+  <insert id="insertSelective" keyProperty="appId" parameterType="com.afd.model.seller.SellerApply" useGeneratedKeys="true">
     insert into t_seller_apply
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="sellerLoginId != null">
@@ -225,11 +230,14 @@
       <if test="remark != null">
         remark,
       </if>
+      <if test="bankLicenseImg != null">
+        bank_license_img,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="appId != null">
-        #{appId,jdbcType=INTEGER},
-      </if>
       <if test="sellerLoginId != null">
         #{sellerLoginId,jdbcType=INTEGER},
       </if>
@@ -355,6 +363,12 @@
       </if>
       <if test="remark != null">
         #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bankLicenseImg != null">
+        #{bankLicenseImg,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -487,6 +501,12 @@
       <if test="remark != null">
         remark = #{remark,jdbcType=VARCHAR},
       </if>
+      <if test="bankLicenseImg != null">
+        bank_license_img = #{bankLicenseImg,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
     </set>
     where app_id = #{appId,jdbcType=INTEGER}
   </update>
@@ -533,7 +553,9 @@
       biz_man_mobile = #{bizManMobile,jdbcType=VARCHAR},
       biz_man_qq = #{bizManQq,jdbcType=VARCHAR},
       biz_man_email = #{bizManEmail,jdbcType=VARCHAR},
-      remark = #{remark,jdbcType=VARCHAR}
+      remark = #{remark,jdbcType=VARCHAR},
+      bank_license_img = #{bankLicenseImg,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR}
     where app_id = #{appId,jdbcType=INTEGER}
   </update> 
 </mapper>
