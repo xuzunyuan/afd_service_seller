@@ -133,4 +133,22 @@
       Column_9 = #{column9,jdbcType=CHAR}
     where audit_id = #{auditId,jdbcType=INTEGER}
   </update>  
+  
+  <!-- 扩展SQL -->
+  <select id="selectRecentAudit" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from T_SELLER_AUDIT
+	 where APPLY_ID = #{applyId,jdbcType=INTEGER}
+	 order by AUDIT_DATE desc
+	 limit 1
+  </select>
+  
+  <select id="selectByApplyId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from T_SELLER_AUDIT
+	 where APPLY_ID = #{applyId,jdbcType=INTEGER}
+	 order by AUDIT_DATE desc
+  </select>
 </mapper>

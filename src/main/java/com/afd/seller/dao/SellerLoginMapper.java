@@ -22,7 +22,7 @@ public interface SellerLoginMapper {
 
 	/** 扩展方法 **/
 
-	// 根据账户名查找账�?
+	// 根据账户名查找账号
 	SellerLogin selectByLoginName(String loginName);
 
 	// 根据卖家ID查询账号
@@ -32,7 +32,7 @@ public interface SellerLoginMapper {
 	@Select("select 1 from t_seller_login where login_name = #{0} limit 1")
 	Integer existLoginName(String loginName);
 
-	// 卖家昵称是否已使�?
+	// 卖家昵称是否已使用
 	@Select("select 1 from t_seller_login where nickname = #{0} limit 1")
 	Integer existNickname(String nickname);
 
@@ -43,4 +43,8 @@ public interface SellerLoginMapper {
 	// 修改登录密码
 	@Update("update t_seller_login set login_pwd = #{1} where seller_login_id = #{0}")
 	int updateLoginPwd(Integer sellerLoginId, String encryptPassword);
+
+	// 修改申请ID
+	@Update("update t_seller_login set seller_apply_id = #{1} where seller_login_id = #{0}")
+	int updateSellerApplyId(Integer sellerLoginId, Integer sellerApplyId);
 }

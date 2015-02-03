@@ -1,5 +1,7 @@
 package com.afd.seller.dao;
 
+import java.util.List;
+
 import com.afd.model.seller.SellerAudit;
 
 public interface SellerAuditMapper {
@@ -14,5 +16,12 @@ public interface SellerAuditMapper {
 	int updateByPrimaryKeySelective(SellerAudit record);
 
 	int updateByPrimaryKey(SellerAudit record);
+
+	/** 扩展 **/
+	// 获取最后一次审批信息
+	SellerAudit selectRecentAudit(Integer applyId);
+
+	// 获取所有审批信息，以时间倒叙
+	List<SellerAudit> selectByApplyId(Integer applyId);
 
 }

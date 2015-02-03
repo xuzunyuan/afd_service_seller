@@ -558,4 +558,12 @@
       tel = #{tel,jdbcType=VARCHAR}
     where app_id = #{appId,jdbcType=INTEGER}
   </update> 
+  
+  	<!-- 扩展 -->
+   <select id="selectByLoginId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List"  />
+    from t_seller_apply
+    where seller_login_id = #{sellerLoginId,jdbcType=INTEGER}
+  </select>
 </mapper>
