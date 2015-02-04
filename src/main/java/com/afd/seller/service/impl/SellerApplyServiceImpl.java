@@ -6,13 +6,16 @@ package com.afd.seller.service.impl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.lang.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.afd.common.mybatis.Page;
 import com.afd.common.util.DateUtils;
 import com.afd.common.util.ThreadPoolUtils;
 import com.afd.constants.seller.SellerConstants.Seller$Status;
@@ -278,5 +281,22 @@ public class SellerApplyServiceImpl implements ISellerApplyService {
 	@Override
 	public SellerAudit getAudit(int auditId) {
 		return sellerAuditMapper.selectByPrimaryKey(auditId);
+	}
+
+	@Override
+	public Page<SellerApply> queryWaitAuditApply(Map<String, Object> queryCond,
+			int... page) {
+
+		Page<SellerApply> p = new Page<SellerApply>();
+
+		if (ArrayUtils.isNotEmpty(page)) {
+			p.setCurrentPageNo(page[0]);
+			if (page.length > 1)
+				p.setPageSize(page[1]);
+		}
+
+		p.setResult(sellerApplyMapper.selectWaitAuditApplyByPage(queryCond, p));
+
+		return p;
 	}
 }

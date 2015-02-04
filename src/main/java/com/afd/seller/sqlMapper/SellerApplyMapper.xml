@@ -562,8 +562,37 @@
   	<!-- 扩展 -->
    <select id="selectByLoginId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
-    <include refid="Base_Column_List"  />
+    <include refid="Base_Column_List"/>
     from t_seller_apply
     where seller_login_id = #{sellerLoginId,jdbcType=INTEGER}
+  </select>
+  
+  <resultMap type="com.afd.model.seller.SellerApply" id="ExtResultMap" extends="BaseResultMap">
+  	<result column="login_name" jdbcType="VARCHAR" property="loginName" />
+  </resultMap>
+  
+  <select id="selectWaitAuditApplyByPage" resultMap="ExtResultMap">
+    select
+    	t1.app_id, t1.seller_login_id, t1.apply_date, t1.status, 
+	    t1.co_name, t1.bt_geo, 
+	    t2.login_name
+    from t_seller_apply t1, t_seller_login t2 
+    where t1.seller_login_id = t2.seller_login_id
+    	and t1.status = '1'
+    	<if test="cond.loginName != null" >
+		 	 <bind name="loginName" value="'%' + cond.loginName + '%'" />
+		 	 and t2.login_name like #{loginName,jdbcType=VARCHAR} 
+		</if>
+		<if test="cond.coName != null" >
+		 	 <bind name="coName" value="'%' + cond.coName + '%'" />
+		 	 and t1.co_name like #{coName,jdbcType=VARCHAR} 
+		</if>
+		<if test="cond.startDt != null" >
+		 	 and t1.apply_date &gt;= #{cond.startDt,jdbcType=TIMESTAMP}
+	    </if>
+	    <if test="cond.endDt != null" >
+		 	 and t1.apply_date &lt; #{cond.endDt,jdbcType=TIMESTAMP}
+	    </if>
+    order by t1.app_id desc
   </select>
 </mapper>
