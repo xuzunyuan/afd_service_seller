@@ -25,7 +25,7 @@ public interface SellerApplyMapper {
 	SellerApply selectByLoginId(Integer sellerLoginId);
 
 	// 修改申请状态
-	@Update("update t_seller_apply set status = #{1} where apply_id = #{0}")
+	@Update("update t_seller_apply set status = #{1} where app_id = #{0}")
 	int updateStatus(Integer appId, String status);
 
 	List<SellerApply> selectWaitAuditApplyByPage(
