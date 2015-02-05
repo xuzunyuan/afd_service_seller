@@ -4,9 +4,13 @@
  */
 package com.afd.seller.service.impl;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.afd.common.util.DateUtils;
+import com.afd.constants.seller.SellerConstants.Seller$IsPaidDeposit;
 import com.afd.model.seller.Seller;
 import com.afd.seller.dao.SellerMapper;
 import com.afd.service.seller.ISellerService;
@@ -36,6 +40,15 @@ public class SellerServiceImpl implements ISellerService {
 	@Override
 	public int updateSeller(Seller seller) {
 		return sellerMapper.updateByPrimaryKeySelective(seller);
+	}
+
+	@Override
+	public int confirmDeposit(int sellerId, Date depositDate,
+			String depositAuditor) {
+
+		return sellerMapper.updateDeposit(sellerId,
+				Seller$IsPaidDeposit.CHARGED, depositDate, depositAuditor,
+				DateUtils.currentDate());
 	}
 
 }

@@ -28,7 +28,13 @@ public interface SellerApplyMapper {
 	@Update("update t_seller_apply set status = #{1} where app_id = #{0}")
 	int updateStatus(Integer appId, String status);
 
+	// 待审核入驻查询
 	List<SellerApply> selectWaitAuditApplyByPage(
+			@Param("cond") Map<String, Object> map,
+			@Param("page") com.afd.common.mybatis.Page<SellerApply> page);
+
+	// 待保证金审核申请查询
+	List<SellerApply> selectWaitDepositAuditApplyByPage(
 			@Param("cond") Map<String, Object> map,
 			@Param("page") com.afd.common.mybatis.Page<SellerApply> page);
 }

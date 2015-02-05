@@ -595,4 +595,30 @@
 	    </if>
     order by t1.app_id desc
   </select>
+  
+  <select id="selectWaitDepositAuditApplyByPage" resultMap="ExtResultMap">
+    select
+    	t1.app_id, t1.seller_login_id, t1.apply_date, t1.status, 
+	    t1.co_name, t1.bt_geo, t1.biz_man_name, t1.biz_man_mobile,
+	    t2.login_name
+    from t_seller_apply t1, t_seller_login t2, t_seller t3 
+    where t1.seller_login_id = t2.seller_login_id
+    	and t2.seller_id = t3.seller_id
+    	and (t3.is_paid_deposit is null or t3.is_paid_deposit = '0') 
+    	<if test="cond.loginName != null" >
+		 	 <bind name="loginName" value="'%' + cond.loginName + '%'" />
+		 	 and t2.login_name like #{loginName,jdbcType=VARCHAR} 
+		</if>
+		<if test="cond.coName != null" >
+		 	 <bind name="coName" value="'%' + cond.coName + '%'" />
+		 	 and t1.co_name like #{coName,jdbcType=VARCHAR} 
+		</if>
+		<if test="cond.startDt != null" >
+		 	 and t1.apply_date &gt;= #{cond.startDt,jdbcType=TIMESTAMP}
+	    </if>
+	    <if test="cond.endDt != null" >
+		 	 and t1.apply_date &lt; #{cond.endDt,jdbcType=TIMESTAMP}
+	    </if>
+    order by t1.app_id desc
+  </select>
 </mapper>

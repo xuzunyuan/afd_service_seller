@@ -299,4 +299,21 @@ public class SellerApplyServiceImpl implements ISellerApplyService {
 
 		return p;
 	}
+
+	@Override
+	public Page<SellerApply> queryWaitDepositAuditApply(
+			Map<String, Object> queryCond, int... page) {
+		Page<SellerApply> p = new Page<SellerApply>();
+
+		if (ArrayUtils.isNotEmpty(page)) {
+			p.setCurrentPageNo(page[0]);
+			if (page.length > 1)
+				p.setPageSize(page[1]);
+		}
+
+		p.setResult(sellerApplyMapper.selectWaitDepositAuditApplyByPage(
+				queryCond, p));
+
+		return p;
+	}
 }
