@@ -566,4 +566,14 @@
     from T_SELLER
     where SELLER_LOGIN_ID = #{loginId,jdbcType=DECIMAL}
   </select>
+  <select id="getSellersByIds" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from T_SELLER
+    where SELLER_LOGIN_ID in 
+		<foreach collection="sellerIds" item="sellerId" open="(" separator=","
+			close=")">
+			#{sellerId}
+		</foreach>
+  </select>
 </mapper>

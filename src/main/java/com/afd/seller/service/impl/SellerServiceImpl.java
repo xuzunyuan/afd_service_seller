@@ -5,6 +5,8 @@
 package com.afd.seller.service.impl;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,6 +51,11 @@ public class SellerServiceImpl implements ISellerService {
 		return sellerMapper.updateDeposit(sellerId,
 				Seller$IsPaidDeposit.CHARGED, depositDate, depositAuditor,
 				DateUtils.currentDate());
+	}
+
+	@Override
+	public List<Seller> getSellersByIds(Set<Long> sellerIds) {
+		return this.sellerMapper.getSellersByIds(sellerIds);
 	}
 
 }
