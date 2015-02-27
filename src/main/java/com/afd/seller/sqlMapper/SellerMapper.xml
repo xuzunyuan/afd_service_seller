@@ -570,7 +570,7 @@
   	select 
     <include refid="Base_Column_List" />
     from T_SELLER
-    where SELLER_LOGIN_ID in 
+    where SELLER_ID in 
 		<foreach collection="sellerIds" item="sellerId" open="(" separator=","
 			close=")">
 			#{sellerId}
