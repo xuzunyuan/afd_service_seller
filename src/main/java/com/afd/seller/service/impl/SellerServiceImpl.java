@@ -14,7 +14,9 @@ import org.springframework.stereotype.Service;
 import com.afd.common.util.DateUtils;
 import com.afd.constants.seller.SellerConstants.Seller$IsPaidDeposit;
 import com.afd.model.seller.Seller;
+import com.afd.model.seller.SellerRetAddress;
 import com.afd.seller.dao.SellerMapper;
+import com.afd.seller.dao.SellerRetAddressMapper;
 import com.afd.service.seller.ISellerService;
 
 /**
@@ -28,6 +30,8 @@ import com.afd.service.seller.ISellerService;
 public class SellerServiceImpl implements ISellerService {
 	@Autowired
 	private SellerMapper sellerMapper;
+	@Autowired
+	private SellerRetAddressMapper sellerRetAddressMapper;
 
 	@Override
 	public Seller getSellerByLoginId(int loginId) {
@@ -57,5 +61,9 @@ public class SellerServiceImpl implements ISellerService {
 	public List<Seller> getSellersByIds(Set<Long> sellerIds) {
 		return this.sellerMapper.getSellersByIds(sellerIds);
 	}
-
+    
+	@Override
+	public SellerRetAddress getSellerRetAddress(Integer sRAId){
+		 return this.sellerRetAddressMapper.selectByPrimaryKey(sRAId);
+	}
 }
