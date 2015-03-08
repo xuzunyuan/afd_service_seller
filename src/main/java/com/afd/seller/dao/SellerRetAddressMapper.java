@@ -1,5 +1,7 @@
 package com.afd.seller.dao;
 
+import java.util.List;
+
 import com.afd.model.seller.SellerRetAddress;
 
 public interface SellerRetAddressMapper {
@@ -15,4 +17,6 @@ public interface SellerRetAddressMapper {
 
 	int updateByPrimaryKey(SellerRetAddress record);
 
+	// 扩展
+	List<SellerRetAddress> selectValidBySellerId(Integer sellerId);
 }

@@ -15,4 +15,5 @@
 	<dubbo:service interface="com.afd.service.seller.ISellerLoginService" ref="sellerLoginService" />
 	<dubbo:service interface="com.afd.service.seller.ISellerService" ref="sellerService" />
 	<dubbo:service interface="com.afd.service.seller.ISellerApplyService" ref="sellerApplyService" />
+	<dubbo:service interface="com.afd.service.seller.ISellerRetAddrService" ref="sellerRetAddressService" />
 </beans>

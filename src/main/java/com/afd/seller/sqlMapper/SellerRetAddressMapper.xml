@@ -214,4 +214,13 @@
       status = #{status,jdbcType=CHAR}
     where s_r_a_id = #{sRAId,jdbcType=INTEGER}
   </update> 
+  
+  <!-- 扩展 -->
+  <select id="selectValidBySellerId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_seller_ret_address
+    where seller_id = #{sellerId,jdbcType=INTEGER}
+    	and status = '1'
+  </select>
 </mapper>
