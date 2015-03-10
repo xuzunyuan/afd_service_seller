@@ -23,6 +23,31 @@ import com.afd.service.seller.ISellerRetAddrService;
 public class SellerRetAddressServiceImpl implements ISellerRetAddrService {
 	@Autowired
 	SellerRetAddressMapper mapper;
+	
+	@Override
+	public int deleteSellerRetAddressById(Integer sRAId) {
+		return this.mapper.deleteByPrimaryKey(sRAId);
+	}
+
+	@Override
+	public int insertSellerRetAddress(SellerRetAddress retAddress) {
+		//取消原默认值
+		if(retAddress.getIsDefault()){
+			this.cancelDefalutAddress(retAddress.getSellerId());
+		}
+		
+		return this.mapper.insert(retAddress);
+	}
+
+	@Override
+	public int updateSellerRetAddressById(SellerRetAddress retAddress) {
+		//取消原默认值
+		if(retAddress.getIsDefault()){
+			this.cancelDefalutAddress(retAddress.getSellerId());
+		}
+				
+		return this.mapper.updateByPrimaryKeySelective(retAddress);
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -41,4 +66,23 @@ public class SellerRetAddressServiceImpl implements ISellerRetAddrService {
 		return mapper.selectByPrimaryKey(id);
 	}
 
+	@Override
+	public int setIsDefault(Integer sRAId, Integer sellerId) {
+		//取消原默认值
+		this.cancelDefalutAddress(sellerId);
+		
+		return this.mapper.setIsDefault(true, sRAId);
+	}
+
+	/**取消原有默认收货地址
+	 * @param sellerId
+	 */
+	private void cancelDefalutAddress(Integer sellerId){
+		SellerRetAddress dra = this.mapper.getDefaultRetAddressBySellerId(sellerId);
+		
+		//取消原默认值
+		if(dra != null){
+			this.mapper.setIsDefault(false, dra.getsRAId());
+		}
+	}
 }

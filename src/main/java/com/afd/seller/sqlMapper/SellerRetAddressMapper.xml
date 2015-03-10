@@ -18,10 +18,11 @@
     <result column="mobile" jdbcType="CHAR" property="mobile" />
     <result column="zip_code" jdbcType="CHAR" property="zipCode" />
     <result column="status" jdbcType="CHAR" property="status" />
+    <result column="is_default" jdbcType="BOOLEAN" property="isDefault" />
   </resultMap>
   <sql id="Base_Column_List">
     s_r_a_id, seller_id, receiver, province, province_name, city, city_name, district, 
-    district_name, town, town_name, addr, tel, mobile, zip_code, status
+    district_name, town, town_name, addr, tel, mobile, zip_code, status, is_default
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -30,7 +31,8 @@
     where s_r_a_id = #{sRAId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from t_seller_ret_address
+    update t_seller_ret_address
+    set status = '0'
     where s_r_a_id = #{sRAId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyProperty="sRAId" parameterType="com.afd.model.seller.SellerRetAddress" useGeneratedKeys="true">
@@ -38,13 +40,13 @@
       province, province_name, city, 
       city_name, district, district_name, 
       town, town_name, addr, 
-      tel, mobile, zip_code, status
+      tel, mobile, zip_code, status, is_default
       )
     values (#{sellerId,jdbcType=INTEGER}, #{receiver,jdbcType=VARCHAR}, 
       #{province,jdbcType=INTEGER}, #{provinceName,jdbcType=VARCHAR}, #{city,jdbcType=DECIMAL}, 
       #{cityName,jdbcType=VARCHAR}, #{district,jdbcType=DECIMAL}, #{districtName,jdbcType=VARCHAR}, 
       #{town,jdbcType=DECIMAL}, #{townName,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, 
-      #{tel,jdbcType=VARCHAR}, #{mobile,jdbcType=CHAR}, #{zipCode,jdbcType=CHAR}, #{status,jdbcType=CHAR}
+      #{tel,jdbcType=VARCHAR}, #{mobile,jdbcType=CHAR}, #{zipCode,jdbcType=CHAR}, #{status,jdbcType=CHAR}, #{isDefault,jdbcType=BOOLEAN}
       )
   </insert>
   <insert id="insertSelective" keyProperty="sRAId" parameterType="com.afd.model.seller.SellerRetAddress" useGeneratedKeys="true">
@@ -95,6 +97,9 @@
       <if test="status != null">
         status,
       </if>
+      <if test="isDefault != null">
+        is_default,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="sellerId != null">
@@ -141,6 +146,9 @@
       </if>
       <if test="status != null">
         #{status,jdbcType=CHAR},
+      </if>
+      <if test="isDefault != null">
+       #{isDefault,jdbcType=BOOLEAN},
       </if>
     </trim>
   </insert>
@@ -192,6 +200,9 @@
       <if test="status != null">
         status = #{status,jdbcType=CHAR},
       </if>
+      <if test="isDefault != null">
+        is_default = #{isDefault,jdbcType=BOOLEAN},
+      </if>
     </set>
     where s_r_a_id = #{sRAId,jdbcType=INTEGER}
   </update>
@@ -211,7 +222,8 @@
       tel = #{tel,jdbcType=VARCHAR},
       mobile = #{mobile,jdbcType=CHAR},
       zip_code = #{zipCode,jdbcType=CHAR},
-      status = #{status,jdbcType=CHAR}
+      status = #{status,jdbcType=CHAR},
+      is_default = #{isDefault,jdbcType=BOOLEAN},
     where s_r_a_id = #{sRAId,jdbcType=INTEGER}
   </update> 
   
@@ -222,5 +234,19 @@
     from t_seller_ret_address
     where seller_id = #{sellerId,jdbcType=INTEGER}
     	and status = '1'
+    order by is_default desc
   </select>
+  
+  <select id="getDefaultRetAddressBySellerId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_seller_ret_address
+    where seller_id = #{sellerId,jdbcType=INTEGER} and is_default = '1'
+  </select>
+  
+  <update id="setIsDefault">
+  	update t_seller_ret_address
+  	set is_default = #{isDefault,jdbcType=BOOLEAN}
+  	where s_r_a_id = #{sRAId,jdbcType=INTEGER}
+  </update>
 </mapper>
