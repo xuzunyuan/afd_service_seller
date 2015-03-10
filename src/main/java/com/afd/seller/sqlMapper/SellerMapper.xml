@@ -33,6 +33,7 @@
     <result column="bank_acct_no" jdbcType="VARCHAR" property="bankAcctNo" />
     <result column="branch_name" jdbcType="VARCHAR" property="branchName" />
     <result column="branch_no" jdbcType="VARCHAR" property="branchNo" />
+    <result column="branch_address" jdbcType="VARCHAR" property="branchAddress" />
     <result column="contract_type" jdbcType="CHAR" property="contractType" />
     <result column="contract_img" jdbcType="VARCHAR" property="contractImg" />
     <result column="biz_man_name" jdbcType="VARCHAR" property="bizManName" />
@@ -52,7 +53,7 @@
     seller_id, seller_login_id, seller_type, create_date, status, co_name, co_bln, bt_start_date, 
     bt_end_date, bt_geo, register_capital, biz_scope, lp_name, lp_mobile, contact_addr, 
     fax, co_site, co_brand, bt_img, org_code_img, tax_img, id_a_img, id_b_img, org_code, 
-    tax_no, tax_type, tax_ratio, bank_acct_name, bank_acct_no, branch_name, branch_no, 
+    tax_no, tax_type, tax_ratio, bank_acct_name, bank_acct_no, branch_name, branch_no,branch_address,
     contract_type, contract_img, biz_man_name, biz_man_position, biz_man_id_no, biz_man_mobile, 
     biz_man_qq, biz_man_email, is_paid_deposit, deposit_date, deposit_auditor, deposit_audit_date, 
     bank_license_img, tel
@@ -78,7 +79,7 @@
       id_a_img, id_b_img, org_code, 
       tax_no, tax_type, tax_ratio, 
       bank_acct_name, bank_acct_no, branch_name, 
-      branch_no, contract_type, contract_img, 
+      branch_no,branch_address, contract_type, contract_img, 
       biz_man_name, biz_man_position, biz_man_id_no, 
       biz_man_mobile, biz_man_qq, biz_man_email, 
       is_paid_deposit, deposit_date, deposit_auditor, 
@@ -94,7 +95,7 @@
       #{idAImg,jdbcType=VARCHAR}, #{idBImg,jdbcType=VARCHAR}, #{orgCode,jdbcType=VARCHAR}, 
       #{taxNo,jdbcType=VARCHAR}, #{taxType,jdbcType=CHAR}, #{taxRatio,jdbcType=VARCHAR}, 
       #{bankAcctName,jdbcType=VARCHAR}, #{bankAcctNo,jdbcType=VARCHAR}, #{branchName,jdbcType=VARCHAR}, 
-      #{branchNo,jdbcType=VARCHAR}, #{contractType,jdbcType=CHAR}, #{contractImg,jdbcType=VARCHAR}, 
+      #{branchNo,jdbcType=VARCHAR},#{branchAddress,jdbcType=VARCHAR}, #{contractType,jdbcType=CHAR}, #{contractImg,jdbcType=VARCHAR}, 
       #{bizManName,jdbcType=VARCHAR}, #{bizManPosition,jdbcType=VARCHAR}, #{bizManIdNo,jdbcType=VARCHAR}, 
       #{bizManMobile,jdbcType=VARCHAR}, #{bizManQq,jdbcType=VARCHAR}, #{bizManEmail,jdbcType=VARCHAR}, 
       #{isPaidDeposit,jdbcType=CHAR}, #{depositDate,jdbcType=TIMESTAMP}, #{depositAuditor,jdbcType=VARCHAR}, 
@@ -193,6 +194,9 @@
       </if>
       <if test="branchNo != null">
         branch_no,
+      </if>
+      <if test="branchAddress != null">
+        branch_address,
       </if>
       <if test="contractType != null">
         contract_type,
@@ -327,6 +331,9 @@
       </if>
       <if test="branchNo != null">
         #{branchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="branchAddress != null">
+        #{branchAddress,jdbcType=VARCHAR},
       </if>
       <if test="contractType != null">
         #{contractType,jdbcType=CHAR},
@@ -465,6 +472,9 @@
       <if test="branchNo != null">
         branch_no = #{branchNo,jdbcType=VARCHAR},
       </if>
+      <if test="branchAddress != null">
+        branch_address = #{branchAddress,jdbcType=VARCHAR},
+      </if>
       <if test="contractType != null">
         contract_type = #{contractType,jdbcType=CHAR},
       </if>
@@ -542,6 +552,7 @@
       bank_acct_no = #{bankAcctNo,jdbcType=VARCHAR},
       branch_name = #{branchName,jdbcType=VARCHAR},
       branch_no = #{branchNo,jdbcType=VARCHAR},
+      branch_address = #{branchAddress,jdbcType=VARCHAR},
       contract_type = #{contractType,jdbcType=CHAR},
       contract_img = #{contractImg,jdbcType=VARCHAR},
       biz_man_name = #{bizManName,jdbcType=VARCHAR},
