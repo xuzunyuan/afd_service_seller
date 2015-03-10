@@ -8,6 +8,7 @@
     <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
     <result column="status" jdbcType="CHAR" property="status" />
     <result column="co_name" jdbcType="VARCHAR" property="coName" />
+    <result column="payee_name" jdbcType="VARCHAR" property="payeeName" />
     <result column="co_bln" jdbcType="VARCHAR" property="coBln" />
     <result column="bt_start_date" jdbcType="TIMESTAMP" property="btStartDate" />
     <result column="bt_end_date" jdbcType="TIMESTAMP" property="btEndDate" />
@@ -50,7 +51,7 @@
     <result column="tel" jdbcType="VARCHAR" property="tel" />
   </resultMap>
   <sql id="Base_Column_List">
-    seller_id, seller_login_id, seller_type, create_date, status, co_name, co_bln, bt_start_date, 
+    seller_id, seller_login_id, seller_type, create_date, status, co_name,payee_name, co_bln, bt_start_date, 
     bt_end_date, bt_geo, register_capital, biz_scope, lp_name, lp_mobile, contact_addr, 
     fax, co_site, co_brand, bt_img, org_code_img, tax_img, id_a_img, id_b_img, org_code, 
     tax_no, tax_type, tax_ratio, bank_acct_name, bank_acct_no, branch_name, branch_no,branch_address,
@@ -70,7 +71,7 @@
   </delete>
   <insert id="insert" keyProperty="sellerId" parameterType="com.afd.model.seller.Seller" useGeneratedKeys="true">
     insert into t_seller (seller_login_id, seller_type, 
-      create_date, status, co_name, 
+      create_date, status, co_name, payee_name,
       co_bln, bt_start_date, bt_end_date, 
       bt_geo, register_capital, biz_scope, 
       lp_name, lp_mobile, contact_addr, 
@@ -86,7 +87,7 @@
       deposit_audit_date, bank_license_img, tel
       )
     values (#{sellerLoginId,jdbcType=INTEGER}, #{sellerType,jdbcType=CHAR}, 
-      #{createDate,jdbcType=TIMESTAMP}, #{status,jdbcType=CHAR}, #{coName,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{status,jdbcType=CHAR}, #{coName,jdbcType=VARCHAR}, #{payeeName,jdbcType=VARCHAR},
       #{coBln,jdbcType=VARCHAR}, #{btStartDate,jdbcType=TIMESTAMP}, #{btEndDate,jdbcType=TIMESTAMP}, 
       #{btGeo,jdbcType=VARCHAR}, #{registerCapital,jdbcType=VARCHAR}, #{bizScope,jdbcType=VARCHAR}, 
       #{lpName,jdbcType=VARCHAR}, #{lpMobile,jdbcType=VARCHAR}, #{contactAddr,jdbcType=VARCHAR}, 
@@ -119,6 +120,9 @@
       </if>
       <if test="coName != null">
         co_name,
+      </if>
+      <if test="payeeName != null">
+        payee_name,
       </if>
       <if test="coBln != null">
         co_bln,
@@ -256,6 +260,9 @@
       </if>
       <if test="coName != null">
         #{coName,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeName != null">
+        #{payeeName,jdbcType=VARCHAR},
       </if>
       <if test="coBln != null">
         #{coBln,jdbcType=VARCHAR},
@@ -397,6 +404,9 @@
       <if test="coName != null">
         co_name = #{coName,jdbcType=VARCHAR},
       </if>
+      <if test="payeeName != null">
+        payee_name = #{payeeName,jdbcType=VARCHAR},
+      </if>
       <if test="coBln != null">
         co_bln = #{coBln,jdbcType=VARCHAR},
       </if>
@@ -527,6 +537,7 @@
       create_date = #{createDate,jdbcType=TIMESTAMP},
       status = #{status,jdbcType=CHAR},
       co_name = #{coName,jdbcType=VARCHAR},
+      payee_name = #{payeeName,jdbcType=VARCHAR},
       co_bln = #{coBln,jdbcType=VARCHAR},
       bt_start_date = #{btStartDate,jdbcType=TIMESTAMP},
       bt_end_date = #{btEndDate,jdbcType=TIMESTAMP},
