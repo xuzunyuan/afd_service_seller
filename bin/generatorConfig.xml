@@ -30,43 +30,8 @@
 			targetProject="afd_service_seller" type="XMLMAPPER">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
-
-		<table tableName="t_seller_apply" domainObjectName="SellerApply"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false">
-		</table>
-		<table tableName="t_seller" domainObjectName="Seller"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false">
-		</table>
-		<table tableName="t_seller_apply_quali" domainObjectName="SellerApplyQuali"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false">
-		</table>
-		<table tableName="t_seller_audit" domainObjectName="SellerAudit"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false">
-		</table>
-		<table tableName="t_seller_credit" domainObjectName="SellerCredit"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false">
-		</table>
-		<table tableName="t_seller_login" domainObjectName="SellerLogin"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false">
-		</table>
-		<table tableName="t_seller_quali" domainObjectName="SellerQuali"
-			enableCountByExample="false" enableUpdateByExample="false"
-			enableDeleteByExample="false" enableSelectByExample="false"
-			selectByExampleQueryId="false">
-		</table>
-		<table tableName="t_seller_ret_address" domainObjectName="SellerRetAddress"
+		
+		<table tableName="t_seller_receipt" domainObjectName="SellerReceipt"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">

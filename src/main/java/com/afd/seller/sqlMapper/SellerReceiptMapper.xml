@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.afd.seller.dao.SellerReceiptMapper" >
+  <resultMap id="BaseResultMap" type="com.afd.model.seller.SellerReceipt" >
+    <id column="receipt_id" property="receiptId" jdbcType="INTEGER" />
+    <result column="seller_id" property="sellerId" jdbcType="INTEGER" />
+    <result column="r_name" property="rName" jdbcType="VARCHAR" />
+    <result column="r_mobile" property="rMobile" jdbcType="CHAR" />
+    <result column="r_address" property="rAddress" jdbcType="VARCHAR" />
+    <result column="tax_img" property="taxImg" jdbcType="VARCHAR" />
+    <result column="tax_no" property="taxNo" jdbcType="VARCHAR" />
+    <result column="register_addr" property="registerAddr" jdbcType="VARCHAR" />
+    <result column="register_tel" property="registerTel" jdbcType="VARCHAR" />
+    <result column="bank_acct_name" property="bankAcctName" jdbcType="VARCHAR" />
+    <result column="bank_acct_no" property="bankAcctNo" jdbcType="VARCHAR" />
+    <result column="tax_type" property="taxType" jdbcType="CHAR" />
+    <result column="co_name" property="coName" jdbcType="VARCHAR" />
+    <result column="quali_url" property="qualiUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    receipt_id, seller_id, r_name, r_mobile, r_address, tax_img, tax_no, register_addr, 
+    register_tel, bank_acct_name, bank_acct_no, tax_type, co_name, quali_url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_seller_receipt
+    where receipt_id = #{receiptId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_seller_receipt
+    where receipt_id = #{receiptId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.afd.model.seller.SellerReceipt" >
+    insert into t_seller_receipt (receipt_id, seller_id, r_name, 
+      r_mobile, r_address, tax_img, 
+      tax_no, register_addr, register_tel, 
+      bank_acct_name, bank_acct_no, tax_type, 
+      co_name, quali_url)
+    values (#{receiptId,jdbcType=INTEGER}, #{sellerId,jdbcType=INTEGER}, #{rName,jdbcType=VARCHAR}, 
+      #{rMobile,jdbcType=CHAR}, #{rAddress,jdbcType=VARCHAR}, #{taxImg,jdbcType=VARCHAR}, 
+      #{taxNo,jdbcType=VARCHAR}, #{registerAddr,jdbcType=VARCHAR}, #{registerTel,jdbcType=VARCHAR}, 
+      #{bankAcctName,jdbcType=VARCHAR}, #{bankAcctNo,jdbcType=VARCHAR}, #{taxType,jdbcType=CHAR}, 
+      #{coName,jdbcType=VARCHAR}, #{qualiUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.afd.model.seller.SellerReceipt" >
+    insert into t_seller_receipt
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="receiptId != null" >
+        receipt_id,
+      </if>
+      <if test="sellerId != null" >
+        seller_id,
+      </if>
+      <if test="rName != null" >
+        r_name,
+      </if>
+      <if test="rMobile != null" >
+        r_mobile,
+      </if>
+      <if test="rAddress != null" >
+        r_address,
+      </if>
+      <if test="taxImg != null" >
+        tax_img,
+      </if>
+      <if test="taxNo != null" >
+        tax_no,
+      </if>
+      <if test="registerAddr != null" >
+        register_addr,
+      </if>
+      <if test="registerTel != null" >
+        register_tel,
+      </if>
+      <if test="bankAcctName != null" >
+        bank_acct_name,
+      </if>
+      <if test="bankAcctNo != null" >
+        bank_acct_no,
+      </if>
+      <if test="taxType != null" >
+        tax_type,
+      </if>
+      <if test="coName != null" >
+        co_name,
+      </if>
+      <if test="qualiUrl != null" >
+        quali_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="receiptId != null" >
+        #{receiptId,jdbcType=INTEGER},
+      </if>
+      <if test="sellerId != null" >
+        #{sellerId,jdbcType=INTEGER},
+      </if>
+      <if test="rName != null" >
+        #{rName,jdbcType=VARCHAR},
+      </if>
+      <if test="rMobile != null" >
+        #{rMobile,jdbcType=CHAR},
+      </if>
+      <if test="rAddress != null" >
+        #{rAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="taxImg != null" >
+        #{taxImg,jdbcType=VARCHAR},
+      </if>
+      <if test="taxNo != null" >
+        #{taxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="registerAddr != null" >
+        #{registerAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="registerTel != null" >
+        #{registerTel,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAcctName != null" >
+        #{bankAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAcctNo != null" >
+        #{bankAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="taxType != null" >
+        #{taxType,jdbcType=CHAR},
+      </if>
+      <if test="coName != null" >
+        #{coName,jdbcType=VARCHAR},
+      </if>
+      <if test="qualiUrl != null" >
+        #{qualiUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.afd.model.seller.SellerReceipt" >
+    update t_seller_receipt
+    <set >
+      <if test="sellerId != null" >
+        seller_id = #{sellerId,jdbcType=INTEGER},
+      </if>
+      <if test="rName != null" >
+        r_name = #{rName,jdbcType=VARCHAR},
+      </if>
+      <if test="rMobile != null" >
+        r_mobile = #{rMobile,jdbcType=CHAR},
+      </if>
+      <if test="rAddress != null" >
+        r_address = #{rAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="taxImg != null" >
+        tax_img = #{taxImg,jdbcType=VARCHAR},
+      </if>
+      <if test="taxNo != null" >
+        tax_no = #{taxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="registerAddr != null" >
+        register_addr = #{registerAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="registerTel != null" >
+        register_tel = #{registerTel,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAcctName != null" >
+        bank_acct_name = #{bankAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAcctNo != null" >
+        bank_acct_no = #{bankAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="taxType != null" >
+        tax_type = #{taxType,jdbcType=CHAR},
+      </if>
+      <if test="coName != null" >
+        co_name = #{coName,jdbcType=VARCHAR},
+      </if>
+      <if test="qualiUrl != null" >
+        quali_url = #{qualiUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where receipt_id = #{receiptId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.afd.model.seller.SellerReceipt" >
+    update t_seller_receipt
+    set seller_id = #{sellerId,jdbcType=INTEGER},
+      r_name = #{rName,jdbcType=VARCHAR},
+      r_mobile = #{rMobile,jdbcType=CHAR},
+      r_address = #{rAddress,jdbcType=VARCHAR},
+      tax_img = #{taxImg,jdbcType=VARCHAR},
+      tax_no = #{taxNo,jdbcType=VARCHAR},
+      register_addr = #{registerAddr,jdbcType=VARCHAR},
+      register_tel = #{registerTel,jdbcType=VARCHAR},
+      bank_acct_name = #{bankAcctName,jdbcType=VARCHAR},
+      bank_acct_no = #{bankAcctNo,jdbcType=VARCHAR},
+      tax_type = #{taxType,jdbcType=CHAR},
+      co_name = #{coName,jdbcType=VARCHAR},
+      quali_url = #{qualiUrl,jdbcType=VARCHAR}
+    where receipt_id = #{receiptId,jdbcType=INTEGER}
+  </update>
+</mapper>
