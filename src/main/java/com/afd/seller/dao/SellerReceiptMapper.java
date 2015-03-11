@@ -14,4 +14,6 @@ public interface SellerReceiptMapper {
     int updateByPrimaryKeySelective(SellerReceipt record);
 
     int updateByPrimaryKey(SellerReceipt record);
+
+	SellerReceipt getSellerReceiptBySellerId(int sellerId);
 }
